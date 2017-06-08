@@ -1,9 +1,16 @@
 (function () {
   'use strict'
 
-    // object valueStore
+    // array valueStore
+  const valueStore = []
 
     // function readInput
+  function readInput (){
+      
+      
+      
+      
+  }
 
     // function evaluateInput
 
