@@ -4,6 +4,8 @@
   // string to store the values from user input
   var valueStore = ''
   
+  const display = document.getElementById('displaySection')
+  
   const normalButtons = document.querySelectorAll('.normalButton')
   
   // add eventListener to all of normalButtons
@@ -14,6 +16,7 @@
       valueStore += item.innerHTML
         
       // and display it in displaySection
+      display.innerHTML = valueStore
         
     })
   })
