@@ -31,11 +31,15 @@
         // and display it in displaySection
         display.innerHTML = valueStore
       
-      // if 'item' is equals evaluate valueStore and display the result
+      //if 'item' is clear
       } else if(item.classList.contains('clearButton')){
+        //set ValueStore to 0
         valueStore = '0'
+        //empty display
         display.innerHTML = null
+      // if 'item' is equals
       } else if(item.classList.contains('equalsButton'))  {
+        // evaluate valueStore and display the result
         display.innerHTML = eval(valueStore)
       }
       
