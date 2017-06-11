@@ -32,8 +32,11 @@
         display.innerHTML = valueStore
       
       // if 'item' is equals evaluate valueStore and display the result
+      } else if(item.classList.contains('clearButton')){
+        valueStore = '0'
+        display.innerHTML = null
       } else if(item.classList.contains('equalsButton'))  {
-          display.innerHTML = eval(valueStore)
+        display.innerHTML = eval(valueStore)
       }
       
     })
