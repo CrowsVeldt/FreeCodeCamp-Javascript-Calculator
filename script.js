@@ -3,9 +3,13 @@
 
   // string to store the values from user input
   var valueStore = ''
+  
+  var history = ''
+  
+  var current = ''
 
   // add const to access display section
-  const history = document.getElementsByClassName('history')
+  const log = document.getElementsByClassName('history')
 
   const totalOrCurrent = document.getElementsByClassName('total-current')
 
@@ -20,19 +24,19 @@
         // on click add button value to valueStore
         valueStore += item.innerHTML
         // and display it in displaySection
-        history[0].innerHTML = valueStore
+        log[0].innerHTML = valueStore
       // if 'item' is an operator add it to valueStore and display valueStore
       } else if (item.classList.contains('operatorButton')) {
         // on click add button value to valueStore
         valueStore += item.innerHTML
         // and display it in displaySection
-        history[0].innerHTML = valueStore
+        log[0].innerHTML = valueStore
       // if 'item' is clear
       } else if (item.classList.contains('clearButton')) {
         // set ValueStore to 0
         valueStore = '0'
         // empty history
-        history[0].innerHTML = null
+        log[0].innerHTML = null
         // empty total
         totalOrCurrent[0].innerHTML = null
       // if 'item' is equals
