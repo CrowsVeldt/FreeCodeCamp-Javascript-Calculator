@@ -18,22 +18,14 @@
         totalOrCurrent[0].innerHTML = current
       // if the button pressed is an operator
       } else if (item.classList.contains('operator')) {
-        if (current.charAt(0) === 0 && current.charAt(1) !== '.') {
-          console.log('boo')
-          current = current.slice(1)
+        // remove extra zeros from the front, to prevent eval from reading 'current' as an octal
+        while (current.charAt(0) === '0' && current.charAt(1) !== '.') { current = current.slice(1) } 
+        
+        history += current + item.innerHTML
 
-          history += current + item.innerHTML
+        current = ''
 
-          current = ''
-
-          totalOrCurrent[0].innerHTML = current
-        } else {
-          history += current + item.innerHTML
-
-          current = ''
-
-          totalOrCurrent[0].innerHTML = current
-        }
+        totalOrCurrent[0].innerHTML = current
 
         log[0].innerHTML = history
       // if the button pressed is the 'clear' button
@@ -57,6 +49,9 @@
         totalOrCurrent[0].innerHTML = current
       // if the button pressed is the equals button
       } else if (item.classList.contains('equals')) {
+        // remove extra zeros from the front, to prevent eval from reading 'current' as an octal
+        while (current.charAt(0) === '0' && current.charAt(1) !== '.') { current = current.slice(1) } 
+        
         history += current
 
         log[0].innerHTML = history
