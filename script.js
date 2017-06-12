@@ -50,15 +50,22 @@
       // if the button pressed is the equals button
       } else if (item.classList.contains('equals')) {
         // remove extra zeros from the front, to prevent eval from reading 'current' as an octal
-        while (current.charAt(0) === '0' && current.charAt(1) !== '.') { current = current.slice(1) } 
+        while (current.charAt(0) === '0' && current.charAt(1) !== '.') { current = current.slice(1) }
         
         history += current
+        // if the history is empty, display a string to avoid eval-ing to undefined
+        if (history === '') {
+        
+          totalOrCurrent[0].innerHTML = 'Push some buttons to see numbers happen!'
 
-        log[0].innerHTML = history
+        } else {
+        
+          log[0].innerHTML = history
 
-        current = ''
+          current = ''
 
-        totalOrCurrent[0].innerHTML = eval(history)
+          totalOrCurrent[0].innerHTML = eval(history)
+        }
       }
     })
   })
