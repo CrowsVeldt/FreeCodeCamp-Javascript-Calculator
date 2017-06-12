@@ -12,21 +12,32 @@
   buttons.forEach(function (item) {
     item.addEventListener('click', function () {
       // if the button pressed is a number
-      if (item.classList.contains('numberButton')) {
+      if (item.classList.contains('number')) {
         current += item.innerHTML
 
         totalOrCurrent[0].innerHTML = current
       // if the button pressed is an operator
-      } else if (item.classList.contains('operatorButton')) {
-        history += current + item.innerHTML
+      } else if (item.classList.contains('operator')) {
+        if (current.charAt(0) === 0 && current.charAt(1) !== '.') {
+          console.log('boo')
+          current = current.slice(1)
 
-        current = ''
+          history += current + item.innerHTML
 
-        totalOrCurrent[0].innerHTML = current
+          current = ''
+
+          totalOrCurrent[0].innerHTML = current
+        } else {
+          history += current + item.innerHTML
+
+          current = ''
+
+          totalOrCurrent[0].innerHTML = current
+        }
 
         log[0].innerHTML = history
       // if the button pressed is the 'clear' button
-      } else if (item.classList.contains('clearButton')) {
+      } else if (item.classList.contains('clear')) {
         history = ''
 
         current = ''
@@ -34,16 +45,18 @@
         log[0].innerHTML = null
 
         totalOrCurrent[0].innerHTML = null
-      // if the button pressed is the equals button
+      // if the button pressed is the clear current button
       } else if (item.classList.contains('clearCurrent')) {
         current = ''
 
         totalOrCurrent[0].innerHTML = null
+        // if the button pressed is the decimal point button
       } else if (item.classList.contains('decimal')) {
         current += item.innerHTML
 
         totalOrCurrent[0].innerHTML = current
-      } else if (item.classList.contains('equalsButton')) {
+      // if the button pressed is the equals button
+      } else if (item.classList.contains('equals')) {
         history += current
 
         log[0].innerHTML = history
