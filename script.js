@@ -19,8 +19,8 @@
       // if the button pressed is an operator
       } else if (item.classList.contains('operator')) {
         // remove extra zeros from the front, to prevent eval from reading 'current' as an octal
-        while (current.charAt(0) === '0' && current.charAt(1) !== '.') { current = current.slice(1) } 
-        
+        while (current.charAt(0) === '0' && current.charAt(1) !== '.') { current = current.slice(1) }
+
         history += current + item.innerHTML
 
         current = ''
@@ -51,15 +51,12 @@
       } else if (item.classList.contains('equals')) {
         // remove extra zeros from the front, to prevent eval from reading 'current' as an octal
         while (current.charAt(0) === '0' && current.charAt(1) !== '.') { current = current.slice(1) }
-        
+
         history += current
         // if the history is empty, display a string to avoid eval-ing to undefined
         if (history === '') {
-        
           totalOrCurrent[0].innerHTML = 'Push some buttons to see numbers happen!'
-
         } else {
-        
           log[0].innerHTML = history
 
           current = ''

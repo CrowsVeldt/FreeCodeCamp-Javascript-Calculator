@@ -1,0 +1,39 @@
+TODOS:
+
+-DONE- Give all buttons the class 'button', add one eventListener to all buttons, and give them a second class, then select by that exactly what to do with them
+
+-DONE- Add a 'clear' button to html, it should empty valueStore and wipe the displaySection
+
+-DONE- Add other operator buttons, start with the basics (-, /, *), then think about more complicated ones
+
+-DONE- Redo displaySection so that when the user presses '=' it still displays valueStore above the result 
+
+-DONE- split valueStore into 'history' and 'current'
+
+-DONE- when a number is pressed add it to 'current' and display current in 'total/current'
+
+-DONE- when an operator or the equals butten is pressed add 'current' to 'history', empty 'current', and wipe 'total/current'
+
+-DONE- when equals is pressed eval 'history' and display it in the 'total/current' display section
+
+-DONE- add period button for decimals
+
+-DONE- add 'ce' button, when 'ce' is pressed empty 'current' and wipe 'total/current'
+
+-DONE- When an operator or the equals button is pressed: IF the first character of 'current' is '0' AND the second character is NOT '.' remove the first character before adding 'current' to 'history'
+
+-DONE- IF 'history' is empty when 'equals' is pressed display something other than 'undefined'
+
+Prevent placing more than one operator in a row (if/else statement? or maybe just setting a flag)
+
+IF the last index of 'history' contains an operator when 'equals' is pressed, remove the operator before running eval 
+
+*bug* if the last action was to enter a number, and the user presses another number, it simply tacks the new number on the end of the old number. This should instead wipe the history and start a new one. POSSIBLE FIX: IF the last button pressed was equals, and the next button pressed is a number, wipe the history. This would require keeping track of the last button pressed. No biggie.
+
+Refactor so that the 'display' control is seperate from the 'input' control
+
+Make it snazzy and sh*t
+
+Add appropriately edifying comments
+
+Research appropriate licence for this project and add it
