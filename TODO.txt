@@ -28,11 +28,13 @@ Prevent placing more than one operator in a row (if/else statement? or maybe jus
 
 IF the last index of 'history' contains an operator when 'equals' is pressed, remove the operator before running eval 
 
+Make it snazzy and sh*t
+
+Make it keyboard-accessible
+
 *bug* if the last action was to enter a number, and the user presses another number, it simply tacks the new number on the end of the old number. This should instead wipe the history and start a new one. POSSIBLE FIX: IF the last button pressed was equals, and the next button pressed is a number, wipe the history. This would require keeping track of the last button pressed. No biggie.
 
 Refactor so that the 'display' control is seperate from the 'input' control
-
-Make it snazzy and sh*t
 
 Add appropriately edifying comments
 
