@@ -57,6 +57,8 @@
         if (history === '') {
           totalOrCurrent[0].innerHTML = 'Push some buttons to see numbers happen!'
         } else {
+          if (history.charAt(history.length-1) === '/') {history = history.slice(0,-1)}
+          
           log[0].innerHTML = history
 
           current = ''
