@@ -35,6 +35,14 @@
 
         totalOrCurrent[0].innerHTML = null
       // if the button pressed is the equals button
+      } else if (item.classList.contains('clearCurrent')) {
+        current = ''
+
+        totalOrCurrent[0].innerHTML = null
+      } else if (item.classList.contains('decimal')) {
+        current += item.innerHTML
+
+        totalOrCurrent[0].innerHTML = current
       } else if (item.classList.contains('equalsButton')) {
         history += current
 
