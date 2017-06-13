@@ -26,6 +26,8 @@ TODOS:
 
 -DONE- IF the last index of 'history' contains an operator when 'equals' is pressed, remove the operator before running eval
 
+pressing an operator button should not add the operator directly to history, this prevents the user from using CE when she changes her mind
+
 Prevent placing more than one operator in a row (if/else statement? or maybe just setting a flag) 
 
 Make it snazzy and sh*t
