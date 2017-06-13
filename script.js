@@ -2,10 +2,42 @@
   'use strict'
 
   var history = ''
-  var current = ''
+  // current character to add to log/display
+  var currentChar = ''
+  // current operator saved to so that it can be easily switched &tc.
+  var currentOperator = ''
+  
+  // display stuff on the screen
+  function display () {
+    
+  const logDisplay = document.getElementsByClassName('logDisplay')
+  const currentDisplay = document.getElementsByClassName('currentDisplay')
+  
+  currentDisplay[0].innerHTML = currentDisplay
+  logDisplay[0].innerHTML = currentChar
+  
+  }
+  
+  
+  // recieve and clean input
+  function input () {
+    
+    
+    
+  }
+  
+  
+  // evaluate stuff, seperated out for general good code-liness and in case I want to mess with the evaluation function in the future
+  function evaluate () {
+    
+    
+    
+  }
+  
+  
 
-  const log = document.getElementsByClassName('history')
-  const totalOrCurrent = document.getElementsByClassName('total-current')
+  /*
+  const log = 
 
   const buttons = document.querySelectorAll('button')
 
@@ -68,4 +100,5 @@
       }
     })
   })
+  */
 }())
