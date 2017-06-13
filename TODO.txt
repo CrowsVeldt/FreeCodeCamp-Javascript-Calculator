@@ -24,9 +24,9 @@ TODOS:
 
 -DONE- IF 'history' is empty when 'equals' is pressed display something other than 'undefined'
 
-Prevent placing more than one operator in a row (if/else statement? or maybe just setting a flag)
+-DONE- IF the last index of 'history' contains an operator when 'equals' is pressed, remove the operator before running eval
 
-IF the last index of 'history' contains an operator when 'equals' is pressed, remove the operator before running eval 
+Prevent placing more than one operator in a row (if/else statement? or maybe just setting a flag) 
 
 Make it snazzy and sh*t
 
