@@ -1,6 +1,25 @@
 body{ 
   
   text-align: center;
+  width: 800px;
   
 }
 
+#display-section{
+  
+  height: 40px;
+  background-color: lightgrey;
+  
+}
+
+.log-display{
+  
+  height: 20px;
+  
+}
+
+.current-display{
+  
+  height: 20px;
+  
+}
