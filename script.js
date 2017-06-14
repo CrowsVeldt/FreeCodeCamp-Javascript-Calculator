@@ -33,17 +33,15 @@
           
     })
     
-    }
-      
-
+  }
   
   input ()
   
   
   // evaluate stuff, seperated out for general good code-liness and in case I want to mess with the evaluation function in the future
-  function evaluate () {
+  function evaluate (stuff) {
     
-    
+    return eval(stuff)
     
   }
 }())
