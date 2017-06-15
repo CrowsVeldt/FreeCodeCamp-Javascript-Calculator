@@ -6,7 +6,7 @@ when pressed:
 
  - The Decimal button adds a decimal to the current argument *unless* there is already one there, in which case it should do nothing
 
- - Operator buttons add the operator to the current operator, unless there is already one there, in which case there are two options: 1. Argument2 is empty, and pushing the operator simply changes the current operator. 2. Argument2 is not empty, and it should act as the equals button (push the arguments to history, eval them, add the result to first argument)
+ - Operator buttons add the operator to the current operator
 
  - the clear buttons can stay the way they are: clear erases history and arguments, clear current just empties current Arguments
 

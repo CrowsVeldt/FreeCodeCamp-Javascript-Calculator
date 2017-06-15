@@ -39,6 +39,33 @@
             display ()
             
           } else if (input.classList.contains('decimal')) {
+            
+            // fill stuff here
+          
+          } else if (input.classList.contains('operator')) {
+            
+            currentOperator = input.innerHTML
+            
+            display ()
+            
+          } else if (input.classList.contains('equals')) {
+            
+            // fill stuff here
+            
+          }
+          
+          
+        } else { // if currentOperator is not empty
+        
+          if (input.classList.contains('number')) {
+            
+            argument2 += input.innerHTML
+            
+            display ()
+            
+          } else if (input.classList.contains('decimal')) {
+            
+            // fill stuff here
           
           } else if (input.classList.contains('operator')) {
             
@@ -63,37 +90,7 @@
             
           } else if (input.classList.contains('equals')) {
             
-          }
-          
-          
-        } else { // if currentOperator is not empty
-        
-          if (input.classList.contains('number')) {
-            
-            argument2 += input.innerHTML
-            
-            display ()
-            
-          } else if (input.classList.contains('decimal')) {
-          
-          } else if (input.classList.contains('operator')) {
-            
-          } else if (input.classList.contains('clear')) {
-            
-            history = ''
-            argument1 = ''
-            argument2 = ''
-            currentOperator = ''
-            display ()
-            
-          } else if (input.classList.contains('clear-current')) {
-
-            argument1 = ''
-            argument2 = ''
-            currentOperator = ''
-            display ()
-            
-          } else if (input.classList.contains('equals')) {
+            // fill stuff here
             
           }
          
