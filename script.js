@@ -32,7 +32,7 @@
 
     }
  
-    return eval(stuff)
+    return eval(stuff).toString()
 
   }
 
@@ -91,7 +91,7 @@
             // push current to history
             history.push(current)
             // return the evaluation of current as a string (to allow delete to work)
-            current = evaluate(current).toString()
+            current = evaluate(current)
 
             display()
           }
