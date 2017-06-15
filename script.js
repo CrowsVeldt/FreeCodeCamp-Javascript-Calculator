@@ -23,6 +23,14 @@
 
   // evaluate stuff, seperated out for general good code-liness and in case I want to mess with the evaluation function in the future
   function evaluate (stuff) {
+    
+
+    // clean leading zeroes from 'stuff'
+    while (stuff.charAt(0) === '0' && stuff.charAt(1) !== '.') {
+
+      stuff = stuff.slice(1)
+
+    }
  
     return eval(stuff)
 
@@ -75,13 +83,7 @@
         } else if (input.classList.contains('equals')) {
           // if current is not empty
           if (current !== ''){
-          
-            // clean leading zeroes from 'current'
-            while (current.charAt(0) === '0' && current.charAt(1) !== '.') {
 
-              current = current.slice(1)
-
-            }
             // (re)set currentOperator
             currentOperator = false
             // (re)set decimalPlaced

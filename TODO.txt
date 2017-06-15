@@ -16,8 +16,6 @@ Need to be able to clean leading zeros on *all* numbers before eval-ing, not jus
 
 IF equals is pressed and the last character is an operator, display an error message ("DOES NOT COMPUTE")
 
-If equals is pressed and history is empty display an error, so that it won't display 'undefined'. (Yay! a regression)
-
 Update display() to clean history before displaying it
 
 Make it snazzy and sh*t
