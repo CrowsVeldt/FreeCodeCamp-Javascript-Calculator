@@ -3,19 +3,19 @@
 
   var history = []
 
-  var arg1 = ''
+  var current = ''
 
-  var arg2 = ''
+  var currentOperator = false
 
-  var currentOperator = ''
+  var decimalPlaced = false
 
   // display stuff on the screen
   function display () {
     const logDisplay = document.getElementsByClassName('log-display')
     const currentDisplay = document.getElementsByClassName('current-display')
 
-    currentDisplay[0].innerHTML = arg1 + ' ' + currentOperator + ' ' + arg2
-    logDisplay[0].innerHTML = history[history.length - 1]
+    currentDisplay[0].innerHTML = current
+    logDisplay[0].innerHTML = history
   }
 
   // evaluate stuff, seperated out for general good code-liness and in case I want to mess with the evaluation function in the future
@@ -29,68 +29,56 @@
 
     buttons.forEach(function (input) {
       input.addEventListener('click', function () {
-        
-        
         if (input.classList.contains('clear')) {
-            history = []
+          history = []
 
-            arg1 = ''
+          current = ''
 
-            arg2 = ''
+          currentOperator = false
 
-            currentOperator = ''
+          decimalPlaced = false
 
-            display()
-          } else if (input.classList.contains('clear-current')) {
-            arg1 = ''
+          display()
+        } else if (input.classList.contains('clear-current')) {
+          current = ''
 
-            arg2 = ''
+          currentOperator = false
 
-            currentOperator = ''
+          decimalPlaced = false
 
-            display()
-          } else if (currentOperator === '' && input.classList.contains('number')) {
-            arg1 += input.innerHTML
+          display()
+        } else if (input.classList.contains('number')) {
+          current += input.innerHTML
 
-            display()
-          } else if (currentOperator === '' && input.classList.contains('decimal')) {
+          currentOperator = false
 
-            // fill stuff here
+          display()
+        } else if (decimalPlaced === false && input.classList.contains('decimal')) {
+          current += input.innerHTML
 
-          } else if (currentOperator === '' && input.classList.contains('operator')) {
-            currentOperator = input.innerHTML
+          display()
 
-            display()
-          } else if (currentOperator === '' && input.classList.contains('equals')) {
-            history.push([arg1, currentOperator, arg2])
+          decimalPlaced = true
+        } else if (currentOperator === false && input.classList.contains('operator')) {
+          current += input.innerHTML
 
-            display()
-          } else if (currentOperator !== '' && input.classList.contains('number')) {
-            arg2 += input.innerHTML
+          display()
 
-            display()
-          } else if (currentOperator !== '' && input.classList.contains('decimal')) {
+          currentOperator = true
 
-            // fill stuff here
+          decimalPlaced = false
+        } else if (input.classList.contains('equals')) {
+          currentOperator = false
 
-          } else if (currentOperator !== '' && input.classList.contains('operator')) {
-            currentOperator = input.innerHTML
+          decimalPlaced = false
 
-            display()
-          } else if (currentOperator !== '' && input.classList.contains('equals')) {
-            history.push([arg1, currentOperator, arg2])
+          history.push(current)
 
-            let current = arg1 + currentOperator + arg2
+          current = evaluate(current)
 
-            arg1 = evaluate(current)
-
-            arg2 = ''
-
-            currentOperator = ''
-
-            display()
-          }
-        })
+          display()
+        }
+      })
     })
   }
 

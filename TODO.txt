@@ -1,32 +1,18 @@
 TODOS:
 
-when pressed:
-
-- DONE - Number buttons add the number to the Argument1 if current operator is empty, to Argument2 otherwise.
-
- - The Decimal button adds a decimal to the current argument *unless* there is already one there, in which case it should do nothing
-
-- DONE - Operator buttons add the operator to the current operator
-
-- DONE - the clear buttons can stay the way they are: clear erases history and arguments, clear current just empties current Arguments
-
-- DONE - the equals button should combine Argument1+current operator+Argument2, push them to history as one entry, and display the total in Argument1. 
-
- - the backspace button should delete the previously entered character: last character of Argument2 until it is empty, then the operator, then the last character of Argument1 until it is empty
-
  - the previous button should empty the current arguments, and pull the previous entry out of history.
+
+ - the delete button should remove the previous character
 
 
 
 ------------------------------
 
-Think about how to refactor input() so that it has less nestedness
+*IMPORTANT* Think about how to refactor input() so that it is simpler
 
-IF equals is pressed AND there is a currentOperator BUT there is no arg2: DON'T push it to history, and display a message saying there is no way to evaluate it.  
+IF equals is pressed and the last character is an operator, display an error message ("DOES NOT COMPUTE")
 
 Update display() to clean history before displaying it
-
-Prevent placing more than one operator in a row (if/else statement? or maybe just setting a flag) 
 
 Make it snazzy and sh*t
 
