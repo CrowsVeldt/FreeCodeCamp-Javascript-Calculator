@@ -29,74 +29,55 @@
 
     buttons.forEach(function (input) {
       input.addEventListener('click', function () {
-        if (currentOperator === '') { // if currentOperator is empty
-          if (input.classList.contains('number')) {
+        
+        
+        if (input.classList.contains('clear')) {
+            history = []
+
+            arg1 = ''
+
+            arg2 = ''
+
+            currentOperator = ''
+
+            display()
+          } else if (input.classList.contains('clear-current')) {
+            arg1 = ''
+
+            arg2 = ''
+
+            currentOperator = ''
+
+            display()
+          } else if (currentOperator === '' && input.classList.contains('number')) {
             arg1 += input.innerHTML
 
             display()
-          } else if (input.classList.contains('decimal')) {
+          } else if (currentOperator === '' && input.classList.contains('decimal')) {
 
             // fill stuff here
 
-          } else if (input.classList.contains('operator')) {
+          } else if (currentOperator === '' && input.classList.contains('operator')) {
             currentOperator = input.innerHTML
 
             display()
-          } else if (input.classList.contains('clear')) {
-            history = []
-
-            arg1 = ''
-
-            arg2 = ''
-
-            currentOperator = ''
-
-            display()
-          } else if (input.classList.contains('clear-current')) {
-            arg1 = ''
-
-            arg2 = ''
-
-            currentOperator = ''
-
-            display()
-          } else if (input.classList.contains('equals')) {
+          } else if (currentOperator === '' && input.classList.contains('equals')) {
             history.push([arg1, currentOperator, arg2])
 
             display()
-          }
-        } else { // if currentOperator is not empty
-          if (input.classList.contains('number')) {
+          } else if (currentOperator !== '' && input.classList.contains('number')) {
             arg2 += input.innerHTML
 
             display()
-          } else if (input.classList.contains('decimal')) {
+          } else if (currentOperator !== '' && input.classList.contains('decimal')) {
 
             // fill stuff here
 
-          } else if (input.classList.contains('operator')) {
+          } else if (currentOperator !== '' && input.classList.contains('operator')) {
             currentOperator = input.innerHTML
 
             display()
-          } else if (input.classList.contains('clear')) {
-            history = []
-
-            arg1 = ''
-
-            arg2 = ''
-
-            currentOperator = ''
-
-            display()
-          } else if (input.classList.contains('clear-current')) {
-            arg1 = ''
-
-            arg2 = ''
-
-            currentOperator = ''
-
-            display()
-          } else if (input.classList.contains('equals')) {
+          } else if (currentOperator !== '' && input.classList.contains('equals')) {
             history.push([arg1, currentOperator, arg2])
 
             let current = arg1 + currentOperator + arg2
@@ -109,8 +90,7 @@
 
             display()
           }
-        }
-      })
+        })
     })
   }
 

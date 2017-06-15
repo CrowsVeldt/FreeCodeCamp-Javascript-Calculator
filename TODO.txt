@@ -20,6 +20,10 @@ when pressed:
 
 ------------------------------
 
+Think about how to refactor input() so that it has less nestedness
+
+IF equals is pressed AND there is a currentOperator BUT there is no arg2: DON'T push it to history, and display a message saying there is no way to evaluate it.  
+
 Update display() to clean history before displaying it
 
 Prevent placing more than one operator in a row (if/else statement? or maybe just setting a flag) 
