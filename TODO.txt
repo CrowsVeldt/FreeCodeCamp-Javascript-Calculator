@@ -1,32 +1,22 @@
 TODOS:
 
--DONE- Give all buttons the class 'button', add one eventListener to all buttons, and give them a second class, then select by that exactly what to do with them
+when pressed:
 
--DONE- Add a 'clear' button to html, it should empty valueStore and wipe the displaySection
+ - Number buttons add the number to the Argument1 if current operator is empty, to Argument2 otherwise.
 
--DONE- Add other operator buttons, start with the basics (-, /, *), then think about more complicated ones
+ - The Decimal button adds a decimal to the current argument *unless* there is already one there, in which case it should do nothing
 
--DONE- Redo displaySection so that when the user presses '=' it still displays valueStore above the result 
+ - Operator buttons add the operator to the current operator, unless there is already one there, in which case there are two options: 1. Argument2 is empty, and pushing the operator simply changes the current operator. 2. Argument2 is not empty, and it should act as the equals button (push the arguments to history, eval them, add the result to first argument)
 
--DONE- split valueStore into 'history' and 'current'
+ - the clear buttons can stay the way they are: clear erases history and arguments, clear current just empties current Arguments
 
--DONE- when a number is pressed add it to 'current' and display current in 'total/current'
+ - the equals button should combine Argument1+current operator+Argument2, push them to history as one entry, and display the total in Argument1. 
 
--DONE- when an operator or the equals butten is pressed add 'current' to 'history', empty 'current', and wipe 'total/current'
+ - the backspace button should delete the previously entered character: last character of Argument2 until it is empty, then the operator, then the last character of Argument1 until it is empty
 
--DONE- when equals is pressed eval 'history' and display it in the 'total/current' display section
 
--DONE- add period button for decimals
 
--DONE- add 'ce' button, when 'ce' is pressed empty 'current' and wipe 'total/current'
-
--DONE- When an operator or the equals button is pressed: IF the first character of 'current' is '0' AND the second character is NOT '.' remove the first character before adding 'current' to 'history'
-
--DONE- IF 'history' is empty when 'equals' is pressed display something other than 'undefined'
-
--DONE- IF the last index of 'history' contains an operator when 'equals' is pressed, remove the operator before running eval
-
-pressing an operator button should not add the operator directly to history, this prevents the user from using CE when she changes her mind
+------------------------------
 
 Prevent placing more than one operator in a row (if/else statement? or maybe just setting a flag) 
 
@@ -34,9 +24,7 @@ Make it snazzy and sh*t
 
 Make it keyboard-accessible
 
-*bug* if the last action was to enter a number, and the user presses another number, it simply tacks the new number on the end of the old number. This should instead wipe the history and start a new one. POSSIBLE FIX: IF the last button pressed was equals, and the next button pressed is a number, wipe the history. This would require keeping track of the last button pressed. No biggie.
-
-Refactor so that the 'display' control is seperate from the 'input' control
+play a different note for each button when pressed
 
 Add appropriately edifying comments
 

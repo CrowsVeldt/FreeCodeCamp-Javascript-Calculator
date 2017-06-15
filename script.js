@@ -1,10 +1,12 @@
 (function () {
   'use strict'
 
-  var history = ''
-  // current characters to add to log/display
-  var current = ''
-  // current operator saved to so that it can be easily switched &tc.
+  var history = []
+ 
+  var argument1 = ''
+  
+  var argument2 = ''
+
   var currentOperator = ''
   
   // display stuff on the screen
@@ -13,7 +15,7 @@
   const logDisplay = document.getElementsByClassName ('log-display')
   const currentDisplay = document.getElementsByClassName ('current-display')
   
-  currentDisplay[0].innerHTML = current
+  currentDisplay[0].innerHTML = argument1 + ' ' + currentOperator + ' ' + argument2
   logDisplay[0].innerHTML = history
   
   }
@@ -28,9 +30,126 @@
       input.addEventListener('click', function(){
         
         
+        if (currentOperator === '') { // if currentOperator is empty
+          
+          if (input.classList.contains('number')) {
+            
+            argument1 += input.innerHTML
+            
+            display ()
+            
+          } else if (input.classList.contains('decimal')) {
+          
+          } else if (input.classList.contains('operator')) {
+            
+            currentOperator = input.innerHTML
+            
+            display ()
+            
+          } else if (input.classList.contains('clear')) {
+            
+            history = ''
+            argument1 = ''
+            argument2 = ''
+            currentOperator = ''
+            display ()
+            
+          } else if (input.classList.contains('clear-current')) {
+
+            argument1 = ''
+            argument2 = ''
+            currentOperator = ''
+            display ()
+            
+          } else if (input.classList.contains('equals')) {
+            
+          }
+          
+          
+        } else { // if currentOperator is not empty
+        
+          if (input.classList.contains('number')) {
+            
+            argument2 += input.innerHTML
+            
+            display ()
+            
+          } else if (input.classList.contains('decimal')) {
+          
+          } else if (input.classList.contains('operator')) {
+            
+          } else if (input.classList.contains('clear')) {
+            
+            history = ''
+            argument1 = ''
+            argument2 = ''
+            currentOperator = ''
+            display ()
+            
+          } else if (input.classList.contains('clear-current')) {
+
+            argument1 = ''
+            argument2 = ''
+            currentOperator = ''
+            display ()
+            
+          } else if (input.classList.contains('equals')) {
+            
+          }
+         
+        }
+        
+        
+        
+        
+//        if (input.classList.contains('number')) {
+//          
+//          if (currentOperator === '') {
+//            
+//            argument1 += input.innerHTML
+//          
+//            display ()
+//            
+//          } else {
+//            
+//            argument2 += input.innerHTML
+//          
+//            display ()
+//            
+//          }
+          
+//        } else if (input.classList.contains('decimal')) {
+//          
+//          if ()
+//          
+//          current += input.innerHTML
+//          
+//          display ()
+//          
+//        } else if (input.classList.contains('operator')) {
+//          
+//          current += input.innerHTML
+//          
+//          display ()
+//          
+//        } else if (input.classList.contains('clear')) {
+//          
+//          history = ''
+//          
+//          current = ''
+//          
+//          display ()
+//          
+//        } else if (input.classList.contains('clear-current')) {
+//          
+//          current = ''
+//          
+//          display ()
+//          
+//        }
         
       })
-          
+      
     })
     
   }
