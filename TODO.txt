@@ -6,6 +6,8 @@ Think about how to refactor decimalPlaced and currentOperator so that the code c
 
  - Need to find a better way of handling decimals generally. A bug I have is that if 'equals' is pressed after 'decimalPlaced' is set to false, but then 'previous' is pressed, it is possible to place multiple decimals in the same number again
 
+Need to be able to clean leading zeros on *all* numbers before eval-ing, not just the first one.
+
 *IMPORTANT* Think about how to refactor input() so that it is simpler
 
 IF equals is pressed and the last character is an operator, display an error message ("DOES NOT COMPUTE")

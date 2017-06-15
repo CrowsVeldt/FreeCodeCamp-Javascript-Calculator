@@ -4,9 +4,11 @@
   var history = []
 
   var current = ''
-
+  
+  // Was the last character an operator? 
   var currentOperator = false
-
+  
+  // is the current number already a decimal/contains a decimal?
   var decimalPlaced = false
 
   // display stuff on the screen
@@ -69,6 +71,8 @@
           decimalPlaced = false
         } else if (input.classList.contains('equals')) {
           
+          
+          // clean leading zeroes from 'current'
           while (current.charAt(0) === '0' && current.charAt(1) !== '.') {
             
             current = current.slice(1)
@@ -81,7 +85,7 @@
 
           history.push(current)
 
-          current = evaluate(current)
+          current = evaluate(current).toString()
 
           display()
         } else if (input.classList.contains('previous')) {
