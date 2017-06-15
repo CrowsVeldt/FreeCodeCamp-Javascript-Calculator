@@ -18,11 +18,14 @@
 
     currentDisplay[0].innerHTML = current
     logDisplay[0].innerHTML = history
+    
   }
 
   // evaluate stuff, seperated out for general good code-liness and in case I want to mess with the evaluation function in the future
   function evaluate (stuff) {
+ 
     return eval(stuff)
+
   }
 
   // recieve and clean input
@@ -70,29 +73,34 @@
 
           decimalPlaced = false
         } else if (input.classList.contains('equals')) {
+          // if current is not empty
+          if (current !== ''){
           
-          
-          // clean leading zeroes from 'current'
-          while (current.charAt(0) === '0' && current.charAt(1) !== '.') {
-            
-            current = current.slice(1)
-            
+            // clean leading zeroes from 'current'
+            while (current.charAt(0) === '0' && current.charAt(1) !== '.') {
+
+              current = current.slice(1)
+
+            }
+            // (re)set currentOperator
+            currentOperator = false
+            // (re)set decimalPlaced
+            decimalPlaced = false
+            // push current to history
+            history.push(current)
+            // return the evaluation of current as a string (to allow delete to work)
+            current = evaluate(current).toString()
+
+            display()
           }
-          
-          currentOperator = false
-
-          decimalPlaced = false
-
-          history.push(current)
-
-          current = evaluate(current).toString()
-
-          display()
         } else if (input.classList.contains('previous')) {
-         
-          current = history.pop()
-          
-          display()
+          // if history is not empty
+          if (history.length > 0) {
+            // return previous entry
+            current = history.pop()
+
+            display()
+          }
          
         } else if (input.classList.contains('delete')) {
           
