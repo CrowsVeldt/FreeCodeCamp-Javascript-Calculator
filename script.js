@@ -68,6 +68,13 @@
 
           decimalPlaced = false
         } else if (input.classList.contains('equals')) {
+          
+          while (current.charAt(0) === '0' && current.charAt(1) !== '.') {
+            
+            current = current.slice(1)
+            
+          }
+          
           currentOperator = false
 
           decimalPlaced = false
@@ -77,6 +84,20 @@
           current = evaluate(current)
 
           display()
+        } else if (input.classList.contains('previous')) {
+         
+          current = history.pop()
+          
+          display()
+         
+        } else if (input.classList.contains('delete')) {
+          
+          currentOperator = false
+          
+          current = current.slice(0, -1)
+          
+          display ()
+          
         }
       })
     })

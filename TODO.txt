@@ -1,16 +1,16 @@
 TODOS:
 
- - the previous button should empty the current arguments, and pull the previous entry out of history.
+Think about how to refactor decimalPlaced and currentOperator so that the code can be put in one place.
 
- - the delete button should remove the previous character
+ - For currentOperator maybe check at the beginning of input() if the last character in current is an operator
 
-
-
-------------------------------
+ - Need to find a better way of handling decimals generally. A bug I have is that if 'equals' is pressed after 'decimalPlaced' is set to false, but then 'previous' is pressed, it is possible to place multiple decimals in the same number again
 
 *IMPORTANT* Think about how to refactor input() so that it is simpler
 
 IF equals is pressed and the last character is an operator, display an error message ("DOES NOT COMPUTE")
+
+If equals is pressed and history is empty display an error, so that it won't display 'undefined'. (Yay! a regression)
 
 Update display() to clean history before displaying it
 
