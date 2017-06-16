@@ -67,13 +67,16 @@
 
           decimalPlaced = true
         } else if (currentOperator === false && input.classList.contains('operator')) {
-          current += input.innerHTML
+          
+          if (current !== '') {
+            current += input.innerHTML
 
-          display()
+            display()
 
-          currentOperator = true
+            currentOperator = true
 
-          decimalPlaced = false
+            decimalPlaced = false
+          }  
         } else if (input.classList.contains('equals')) {
           // if current is not empty and the last and first char are not an operators
           if (current !== '' && current.charAt(current.length-1) !== '+' && current.charAt(current.length-1) !== '-' && current.charAt(current.length-1) !== '/' && current.charAt(current.length-1) !== '*') {

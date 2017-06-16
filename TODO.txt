@@ -1,8 +1,8 @@
 TODOS:
 
- -DONE- prevent trailing operators from being pushed to 'history' (this should happen in input(), don't let 'equals' run if the last character is an operator)
+-DONE- prevent trailing operators from being pushed to 'history' (this should happen in input(), don't let 'equals' run if the last character is an operator)
 
-- prevent entries which start with '*' and '/' from being pushed to history
+-DONE- prevent entries which start with '*' and '/' from being pushed to history
 
 - prevent placing two operators in a row (this should happen in input())
 
