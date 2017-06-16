@@ -4,7 +4,7 @@ TODOS:
 
 -DONE- prevent entries which start with '*' and '/' from being pushed to history
 
-- prevent placing two operators in a row (this should happen in input())
+- prevent placing two operators in a row (this should happen in input()) (almost working, there are edge cases involving previous and delete where it will still happen)
 
 - prevent placing more than one decimal point in the same number (for this I'll have to keep track of each discrete number)
 
