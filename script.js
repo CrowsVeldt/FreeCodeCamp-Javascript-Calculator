@@ -4,10 +4,10 @@
   var history = []
 
   var current = ''
-  
-  // Was the last character an operator? 
+
+  // Was the last character an operator?
   var currentOperator = false
-  
+
   // is the current number already a decimal/contains a decimal?
   var decimalPlaced = false
 
@@ -18,22 +18,16 @@
 
     currentDisplay[0].innerHTML = current
     logDisplay[0].innerHTML = history
-    
   }
-  
+
   // evaluate the function to display
   function evaluate (entry) {
-    
-
     // clean leading zeroes from 'entry'
     while (entry.charAt(0) === '0' && entry.charAt(1) !== '.') {
-
       entry = entry.slice(1)
-
     }
- 
-    return eval(entry).toString()
 
+    return eval(entry).toString()
   }
 
   // recieve and clean input
@@ -82,8 +76,7 @@
           decimalPlaced = false
         } else if (input.classList.contains('equals')) {
           // if current is not empty
-          if (current !== ''){
-
+          if (current !== '') {
             // (re)set currentOperator
             currentOperator = false
             // (re)set decimalPlaced
@@ -103,15 +96,12 @@
 
             display()
           }
-         
         } else if (input.classList.contains('delete')) {
-          
           currentOperator = false
-          
+
           current = current.slice(0, -1)
-          
-          display ()
-          
+
+          display()
         }
       })
     })
