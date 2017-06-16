@@ -11,7 +11,7 @@
   // is the current number already a decimal/contains a decimal?
   var decimalPlaced = false
 
-  // display stuff on the screen
+  // display entry on the screen
   function display () {
     const logDisplay = document.getElementsByClassName('log-display')
     const currentDisplay = document.getElementsByClassName('current-display')
@@ -20,19 +20,19 @@
     logDisplay[0].innerHTML = history
     
   }
-
-  // evaluate stuff, seperated out for general good code-liness and in case I want to mess with the evaluation function in the future
-  function evaluate (stuff) {
+  
+  // evaluate the function to display
+  function evaluate (entry) {
     
 
-    // clean leading zeroes from 'stuff'
-    while (stuff.charAt(0) === '0' && stuff.charAt(1) !== '.') {
+    // clean leading zeroes from 'entry'
+    while (entry.charAt(0) === '0' && entry.charAt(1) !== '.') {
 
-      stuff = stuff.slice(1)
+      entry = entry.slice(1)
 
     }
  
-    return eval(stuff).toString()
+    return eval(entry).toString()
 
   }
 

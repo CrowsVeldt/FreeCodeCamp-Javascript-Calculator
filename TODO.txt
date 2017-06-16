@@ -1,16 +1,22 @@
 TODOS:
 
-Think about how to refactor decimalPlaced and currentOperator so that the code can be put in one place.
+ - clean trailing operators before evaluating 'history' (this should happen in evaluate(), simply chop it off and evaluate what's left)
+- prevent placing two operators in a row (this should happen in input())
+- prevent placing more than one decimal point in the same number (for this I'll have to keep track of each discrete number)
+- prevent placing a zero at the start of a number (this should happen in input)
 
- - For currentOperator maybe check at the beginning of input() if the last character in current is an operator
 
- - Need to find a better way of handling decimals generally. A bug I have is that if 'equals' is pressed after 'decimalPlaced' is set to false, but then 'previous' is pressed, it is possible to place multiple decimals in the same number again
-
---------
-
-Need to be able to clean leading zeros on *all* numbers before eval-ing, not just the first one.
-
- - Maybe I should make 'current' an array as well. When 'equal' is pressed, clean each index before adding it to a string and eval-ing the string, or just reduce the array to a number.
+- Split 'current' into 'currentNumber' and 'currentEquation'
+- Display them like normal
+- 'currentEqaution' is an array of strings
+- 'currentNumber' is a string
+- When a button is pressed:
+- - if it's a number it is added to 'currentNumber'
+- - if it's a decimal then add a decimal, unless there's already one, in which case do nothing
+- - if it's an operator push 'currentNumber' to 'currentEquation' and push the operator to 'currentEquation'
+- - if it's the equals button, push 'currentNumber' to 'currentEquation', push 'currentEquation' to 'history' then evaluate 'currentEquation'.
+- Evaluate() takes 'currentEquation', if it has an operator at the end it cuts it off, then collapses it to a number and runs 'eval' on it.
+- Display() takes 'currentEquation' and 'currentNumber' cleans them up and displays them in current-display, it also cleans history up before displaying it
 
 ---------
 
