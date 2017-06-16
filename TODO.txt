@@ -3,7 +3,7 @@ TODOS:
  - clean trailing operators before evaluating 'history' (this should happen in evaluate(), simply chop it off and evaluate what's left)
 - prevent placing two operators in a row (this should happen in input())
 - prevent placing more than one decimal point in the same number (for this I'll have to keep track of each discrete number)
-- prevent placing a zero at the start of a number (this should happen in input)
+- prevent placing zeros at the beginning of a number, (if zero is pressed and currentNumber is empty just do nothing (GOD why didn't I think of that!? :-P) (this should happen in input
 
 
 - Split 'current' into 'currentNumber' and 'currentEquation'
@@ -17,13 +17,9 @@ TODOS:
 - - if it's the equals button, push 'currentNumber' to 'currentEquation', push 'currentEquation' to 'history' then evaluate 'currentEquation'.
 - Evaluate() takes 'currentEquation', if it has an operator at the end it cuts it off, then collapses it to a number and runs 'eval' on it.
 - Display() takes 'currentEquation' and 'currentNumber' cleans them up and displays them in current-display, it also cleans history up before displaying it
-
----------
-
-IF equals is pressed and the last character is an operator, display an error message ("DOES NOT COMPUTE")
-
 Update display() to clean history before displaying it
 
+----------
 Make it snazzy and sh*t
 
 Make it keyboard-accessible
