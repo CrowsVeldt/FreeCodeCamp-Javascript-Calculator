@@ -75,8 +75,8 @@
 
           decimalPlaced = false
         } else if (input.classList.contains('equals')) {
-          // if current is not empty
-          if (current !== '') {
+          // if current is not empty and the last and first char are not an operators
+          if (current !== '' && current.charAt(current.length-1) !== '+' && current.charAt(current.length-1) !== '-' && current.charAt(current.length-1) !== '/' && current.charAt(current.length-1) !== '*') {
             // (re)set currentOperator
             currentOperator = false
             // (re)set decimalPlaced

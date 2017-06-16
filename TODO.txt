@@ -1,25 +1,22 @@
 TODOS:
 
- - clean trailing operators before evaluating 'history' (this should happen in evaluate(), simply chop it off and evaluate what's left)
+ -DONE- prevent trailing operators from being pushed to 'history' (this should happen in input(), don't let 'equals' run if the last character is an operator)
+
+- prevent entries which start with '*' and '/' from being pushed to history
+
 - prevent placing two operators in a row (this should happen in input())
+
 - prevent placing more than one decimal point in the same number (for this I'll have to keep track of each discrete number)
-- prevent placing zeros at the beginning of a number, (if zero is pressed and currentNumber is empty just do nothing (GOD why didn't I think of that!? :-P) (this should happen in input
+
+- prevent placing zeros at the beginning of a number, (if zero is pressed and currentNumber is empty just do nothing (GOD why didn't I think of that!? :-P) (this should happen in input)
+
+- Update display() to clean history before displaying it
 
 
-- Split 'current' into 'currentNumber' and 'currentEquation'
-- Display them like normal
-- 'currentEqaution' is an array of strings
-- 'currentNumber' is a string
-- When a button is pressed:
-- - if it's a number it is added to 'currentNumber'
-- - if it's a decimal then add a decimal, unless there's already one, in which case do nothing
-- - if it's an operator push 'currentNumber' to 'currentEquation' and push the operator to 'currentEquation'
-- - if it's the equals button, push 'currentNumber' to 'currentEquation', push 'currentEquation' to 'history' then evaluate 'currentEquation'.
-- Evaluate() takes 'currentEquation', if it has an operator at the end it cuts it off, then collapses it to a number and runs 'eval' on it.
-- Display() takes 'currentEquation' and 'currentNumber' cleans them up and displays them in current-display, it also cleans history up before displaying it
-Update display() to clean history before displaying it
 
-----------
+
+---------- LATER:
+
 Make it snazzy and sh*t
 
 Make it keyboard-accessible
