@@ -3,12 +3,11 @@
 
   var history = []
 
-  var current = ''
+  var currentEntry = ''
+  
+  var lastCharacter = ''
 
-  // Was the last character an operator?
-  var currentOperator = false
-
-  // is the current number already a decimal/contains a decimal?
+  // is the currentEntry number already a decimal/contains a decimal?
   var decimalPlaced = false
 
   // display entry on the screen
@@ -16,7 +15,7 @@
     const logDisplay = document.getElementsByClassName('log-display')
     const currentDisplay = document.getElementsByClassName('current-display')
 
-    currentDisplay[0].innerHTML = current
+    currentDisplay[0].innerHTML = currentEntry
     logDisplay[0].innerHTML = history
   }
 
@@ -39,55 +38,44 @@
         if (input.classList.contains('clear')) {
           history = []
 
-          current = ''
-
-          currentOperator = false
+          currentEntry = ''
 
           decimalPlaced = false
 
           display()
-        } else if (input.classList.contains('clear-current')) {
-          current = ''
-
-          currentOperator = false
-
+        } else if (input.classList.contains('clear-currentEntry')) {
+          currentEntry = ''
+          
           decimalPlaced = false
 
           display()
         } else if (input.classList.contains('number')) {
-          current += input.innerHTML
-
-          currentOperator = false
+          currentEntry += input.innerHTML
 
           display()
         } else if (decimalPlaced === false && input.classList.contains('decimal')) {
-          current += input.innerHTML
+          currentEntry += input.innerHTML
 
           display()
 
           decimalPlaced = true
-        } else if (currentOperator === false && input.classList.contains('operator')) {
-          
-          if (current !== '') {
-            current += input.innerHTML
+        } else if (input.classList.contains('operator')) {
+          if (currentEntry !== '' && lastCharacter !== '+' && lastCharacter !== '-' && lastCharacter !== '/' && lastCharacter !== '*') {
+            currentEntry += input.innerHTML
 
             display()
 
-            currentOperator = true
-
             decimalPlaced = false
-          }  
+          }
         } else if (input.classList.contains('equals')) {
-          // if current is not empty and the last and first char are not an operators
-          if (current !== '' && current.charAt(current.length-1) !== '+' && current.charAt(current.length-1) !== '-' && current.charAt(current.length-1) !== '/' && current.charAt(current.length-1) !== '*') {
-            // (re)set currentOperator
-            currentOperator = false
+          // if currentEntry is not empty and the last and first char are not an operators
+          if (currentEntry !== '' && lastCharacter !== '+' && lastCharacter !== '-' && lastCharacter !== '/' && lastCharacter !== '*') {
             // (re)set decimalPlaced
             decimalPlaced = false
-            // push current to history
-            history.push(current)
-            // return the evaluation of current as a string (to allow delete to work)
-            current = evaluate(current)
+            // push currentEntry to history
+            history.push(currentEntry)
+            // return the evaluation of currentEntry as a string (to allow delete to work)
+            currentEntry = evaluate(currentEntry)
 
             display()
           }
@@ -95,20 +83,24 @@
           // if history is not empty
           if (history.length > 0) {
             // return previous entry
-            current = history.pop()
+            currentEntry = history.pop()
 
             display()
           }
         } else if (input.classList.contains('delete')) {
-          currentOperator = false
 
-          current = current.slice(0, -1)
+          currentEntry = currentEntry.slice(0, -1)
 
           display()
         }
+        
+        // set 'lastCharacter' to the current last character of 'currentEntry' 
+        lastCharacter = currentEntry.charAt(currentEntry.length-1)
+
       })
     })
   }
 
   input()
+
 }())
