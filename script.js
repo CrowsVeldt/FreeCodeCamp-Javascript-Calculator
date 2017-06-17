@@ -29,13 +29,13 @@
   }
 
   // evaluate the function to display
-  function evaluate (currentEntry) {
+  function evaluate (equation) {
     // clean leading zeroes from 'currentEntry'
-    while (currentEntry.charAt(0) === '0' && currentEntry.charAt(1) !== '.') {
-      currentEntry = currentEntry.slice(1)
+    while (equation.charAt(0) === '0' && equation.charAt(1) !== '.') {
+      equation = equation.slice(1)
     }
 
-    return eval(currentEntry).toString()
+    return eval(equation).toString()
   }
 
   // recieve and clean input
@@ -78,6 +78,8 @@
             currentEntry += input.innerHTML
             // then push currentEntry to equationToEvaluate
             equationToEvaluate.push([currentEntry])
+            
+            currentEntry = ''
 
             display()
 
@@ -88,10 +90,14 @@
           if (currentEntry !== '') {
             // (re)set decimalPlaced
             decimalPlaced = false
-            // push currentEntry to history
-            history.push(currentEntry)
-
-            currentEntry = evaluate(currentEntry)
+            // push currentEntry to equationToEvaluate
+            equationToEvaluate.push(currentEntry)
+            // evaluate equationToEvaluate and set currentEntry to the result
+            currentEntry = evaluate(equationToEvaluate.join(''))
+            // push equationToEvalute to history
+            history.push(equationToEvaluate)
+            // empty equationToEvaluate
+            equationToEvaluate = []
 
             display()
           }
@@ -99,7 +105,9 @@
           // if history is not empty
           if (history.length > 0) {
             // return previous currentEntry
-            currentEntry = history.pop()
+            currentEntry = history.pop().join('')
+            
+            console.log(currentEntry)
 
             display()
           }
