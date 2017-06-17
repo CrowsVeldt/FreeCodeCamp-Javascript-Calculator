@@ -59,7 +59,7 @@
           currentEntry += input.innerHTML
 
           display()
-        } else if (input.classList.contains('decimal')) {
+        } else if (input.classList.contains('decimal') && currentEntry.indexOf('.') === -1) {
           currentEntry += input.innerHTML
 
           display()
