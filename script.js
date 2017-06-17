@@ -77,7 +77,7 @@
             // add the operator to currentEntry
             currentEntry += input.innerHTML
             // then push currentEntry to equationToEvaluate
-            equationToEvaluate.push([currentEntry])
+            equationToEvaluate.push(currentEntry)
             
             currentEntry = ''
 
@@ -101,18 +101,21 @@
 
             display()
           }
-        } else if (input.classList.contains('previous')) {
-          // if history is not empty
-          if (history.length > 0) {
-            // return previous currentEntry
-            currentEntry = history.pop().join('')
-            
-            console.log(currentEntry)
+        } else if (input.classList.contains('previous') && history.length > 0) {
+            // set equationToEvaluate to the last element of history
+            equationToEvaluate = (history[history.length-1])
+            // remove the last element of history
+            history.pop()
+            // move last element of equationToEvaluate to currentEntry
+            currentEntry = equationToEvaluate.pop()
 
             display()
-          }
         } else if (input.classList.contains('delete')) {
-
+          if (currentEntry === '' && equationToEvaluate.length > 0){
+            
+            currentEntry = equationToEvaluate.pop()
+            
+          }
           currentEntry = currentEntry.slice(0, -1)
 
           display()
