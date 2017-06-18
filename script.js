@@ -18,10 +18,10 @@
     const logDisplay = document.getElementsByClassName('log')
     const currentDisplay = document.getElementsByClassName('current')
 
-    currentDisplay[0].innerHTML =  '<em>' + equationToEvaluate.join('') + '</em>' + currentEntry
-    
-    if (history.length > 0){
-      logDisplay[0].innerHTML = history[history.length -1].join('')
+    currentDisplay[0].innerHTML = equationToEvaluate.join('') + currentEntry
+
+    if (history.length > 0) {
+      logDisplay[0].innerHTML = history[history.length - 1].join('')
     } else {
       logDisplay[0].innerHTML = ''
     }
@@ -32,7 +32,7 @@
     return eval(equation).toString()
   }
 
-  // recieve and clean input
+  // recieve input
   function input () {
     const buttons = document.querySelectorAll('button')
 
@@ -99,9 +99,12 @@
 
           display()
         } else if (input.classList.contains('delete')) {
+          // if currentEntry is empty and equationToEvaluate isn't
           if (currentEntry === '' && equationToEvaluate.length > 0) {
+            // pop the last elemt of equationToEvaluate into currentEntry
             currentEntry = equationToEvaluate.pop()
           }
+          // remove the last charecter of currentEntry
           currentEntry = currentEntry.slice(0, -1)
 
           display()
