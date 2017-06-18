@@ -29,13 +29,10 @@
 
   // evaluate the function to display
   function evaluate (equation) {
-    
-    if (equation[0] === '0' && equation[1] !== '.'){
-      
+    if (equation[0] === '0' && equation[1] !== '.') {
       return eval(equation.slice(1)).toString()
-      
     }
-    
+
     return eval(equation).toString()
   }
 
