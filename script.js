@@ -18,11 +18,8 @@
     const logDisplay = document.getElementsByClassName('log')
     const currentDisplay = document.getElementsByClassName('current')
 
-    const tempDisplay = document.getElementsByClassName('temp')
-
-    currentDisplay[0].innerHTML = currentEntry
+    currentDisplay[0].innerHTML =  equationToEvaluate + currentEntry
     logDisplay[0].innerHTML = history
-    tempDisplay[0].innerHTML = equationToEvaluate
   }
 
   // evaluate the function to display
