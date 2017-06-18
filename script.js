@@ -7,7 +7,7 @@
   // the equation that will be evaluated after pressing 'equals'
   var equationToEvaluate = []
 
-  // the current number
+  // the number currently being entered
   var currentEntry = ''
 
   // the last character of the current number
@@ -27,11 +27,6 @@
 
   // evaluate the function to display
   function evaluate (equation) {
-    // clean leading zeroes from 'currentEntry'
-    while (equation.charAt(0) === '0' && equation.charAt(1) !== '.') {
-      equation = equation.slice(1)
-    }
-
     return eval(equation).toString()
   }
 
@@ -53,6 +48,10 @@
           equationToEvaluate = []
 
           currentEntry = ''
+
+          display()
+        } else if (input.classList.contains('zero') && currentEntry !== '') {
+          currentEntry += input.innerHTML
 
           display()
         } else if (input.classList.contains('number')) {
