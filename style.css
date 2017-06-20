@@ -1,19 +1,35 @@
 body{ 
   
-  text-align: center;
-  width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   
 }
 
-#display-section{
+main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   
-  height: 60px;
+  width: 80%
+}
+
+#display-section{
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  width: 400px;
   background-color: lightgrey;
  
 }
 
-.display{
+.log{
   
   height: 20px;
 
+}
+
+.current {
+  height: 40px;
+  font-size: 30px
 }
