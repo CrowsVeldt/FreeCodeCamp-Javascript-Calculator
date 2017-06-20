@@ -34,15 +34,23 @@ main{
   font-size: 30px
 }
 
+.button{ 
+  
+  width: 100px
+
+}
+
 #keypad{
   
   display: flex;
-  flex-direction: column
+  flex-direction: row;
+  width: 400px;
+  flex-wrap: wrap
   
 }
 
-#keypad .operator-column {
+#keypad row {
   
-  flex-direction: column;
+  align-self: flex-start;
   
 }
