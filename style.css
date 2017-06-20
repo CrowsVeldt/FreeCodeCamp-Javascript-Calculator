@@ -33,3 +33,16 @@ main{
   height: 40px;
   font-size: 30px
 }
+
+#keypad{
+  
+  display: flex;
+  flex-direction: column
+  
+}
+
+#keypad .operator-column {
+  
+  flex-direction: column;
+  
+}
