@@ -1,44 +1,48 @@
-/*redesign it for mobile first, it should fill the whole screen, the display should be clearly readable and the buttons easy to touch. Scale it down for larger screens as appropriate*/
-
-body { 
+/*body { 
   display: flex;
   flex-direction: column;
   align-items: center;
-  
-}
+}*/
 
 main {
-  background-color: aqua;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 300px;
-  width: 500px
+  height: 100vh;
+  width: 100vw;
 }
 
 #display-section {
   display: flex;
   flex-direction: column;
   align-items: end;
-  width: 400px;
+  width: 100vw;
+  height: 33.3vh;
   background-color: lightgrey;
  
 }
 
 .log-display {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   
-  height: 20px;
+  height: 11vh;
 
 }
 
 .current-display {
-  height: 40px;
-  font-size: 30px
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+  height: 22vh;
+  
 }
 
 .button { 
   
-  width: 100px
+  width: 25vw;
 
 }
 
@@ -46,7 +50,8 @@ main {
   
   display: flex;
   flex-direction: row;
-  width: 400px;
+  width: 100vw;
+  height: 66.6vh;
   flex-wrap: wrap
   
 }
