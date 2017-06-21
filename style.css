@@ -1,23 +1,22 @@
-/*body { 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}*/
+/*Styles for mobile*/
 
-main {
+body { 
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
-  width: 100vw;
+  justify-content: center;
+  
+  background-color: cadetblue;
 }
 
 #display-section {
   display: flex;
   flex-direction: column;
   align-items: end;
+  
   width: 100vw;
   height: 33.3vh;
+  
   background-color: lightgrey;
  
 }
@@ -50,8 +49,74 @@ main {
   
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+    
   width: 100vw;
   height: 66.6vh;
-  flex-wrap: wrap
+
+  
+}
+
+/*Styles for desktop*/
+
+
+@media (min-width: 1024px) {
+ 
+  body { 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  background-color: cadetblue;
+}
+
+#display-section {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  
+  width: 80vw;
+  height: 26.6vh;
+  
+  background-color: lightgrey;
+ 
+}
+
+.log-display {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+  height: 8.8vh;
+
+}
+
+.current-display {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+  height: 17.7vh;
+  
+}
+
+.button { 
+  
+  width: 20vw;
+
+}
+
+#keypad {
+  
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+    
+  width: 80vw;
+  height: 53.3vh;
+
+  
+}
+
   
 }
