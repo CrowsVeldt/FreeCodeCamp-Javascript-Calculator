@@ -20,7 +20,7 @@
     const currentDisplay = document.getElementsByClassName('current-display')
 
     currentDisplay[0].innerHTML = currentEntry
-    
+
     equationDisplay[0].innerHTML = equationToEvaluate.join('')
 
     if (history.length > 0) {
