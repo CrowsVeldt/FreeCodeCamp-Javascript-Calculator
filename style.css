@@ -21,17 +21,6 @@ body {
  
 }
 
-.log-display {
-  display: flex;
-  flex-direction: row;
-  align-items: center;  
-  
-  height: 11vh;
-  font-size: 5vmin;
-  
-  color: darkred;
-  
-}
 
 .current-display {
   display: flex;
@@ -42,6 +31,30 @@ body {
   font-size: 10vmin;
   
 }
+
+.equation-display {
+  display: flex;
+  flex-direction: row;
+  align-items: center;  
+  
+  height: 7vh;
+  font-size: 6vmin;
+  
+}
+
+.log-display {
+  display: flex;
+  flex-direction: row;
+  align-items: center;  
+  
+  height: 4vh;
+  font-size: 4vmin;
+  
+  color: darkred;
+  
+}
+
+
 
 .button { 
   display: flex;
