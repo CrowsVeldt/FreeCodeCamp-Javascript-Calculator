@@ -24,10 +24,11 @@ body {
 .log-display {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: center;  
   
   height: 11vh;
-
+  font-size: 5vh;
+  
 }
 
 .current-display {
@@ -36,6 +37,7 @@ body {
   align-items: center;
   
   height: 22vh;
+  font-size: 10vh;
   
 }
 
@@ -45,7 +47,7 @@ body {
   align-items: center;
   
   width: 25vw;
-  font-size: 6.6vh;
+  font-size: 6.6vmin;
 
 }
 
