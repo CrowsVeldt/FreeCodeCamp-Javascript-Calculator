@@ -27,7 +27,9 @@ body {
   align-items: center;  
   
   height: 11vh;
-  font-size: 5vh;
+  font-size: 5vmin;
+  
+  color: darkred;
   
 }
 
@@ -37,7 +39,7 @@ body {
   align-items: center;
   
   height: 22vh;
-  font-size: 10vh;
+  font-size: 10vmin;
   
 }
 
@@ -48,6 +50,8 @@ body {
   
   width: 25vw;
   font-size: 6.6vmin;
+  
+  color: black;
 
 }
 
