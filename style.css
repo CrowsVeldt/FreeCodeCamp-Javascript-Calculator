@@ -40,8 +40,12 @@ body {
 }
 
 .button { 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   
   width: 25vw;
+  font-size: 6.6vh;
 
 }
 
