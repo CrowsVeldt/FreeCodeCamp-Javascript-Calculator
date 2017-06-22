@@ -16,9 +16,12 @@
   // display on the screen
   function display () {
     const logDisplay = document.getElementsByClassName('log-display')
+    const equationDisplay = document.getElementsByClassName('equation-display')
     const currentDisplay = document.getElementsByClassName('current-display')
 
-    currentDisplay[0].innerHTML = equationToEvaluate.join('') + currentEntry
+    currentDisplay[0].innerHTML = currentEntry
+    
+    equationDisplay[0].innerHTML = equationToEvaluate.join('')
 
     if (history.length > 0) {
       logDisplay[0].innerHTML = history[history.length - 1].join('')
