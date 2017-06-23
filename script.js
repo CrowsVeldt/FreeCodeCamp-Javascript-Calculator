@@ -48,7 +48,7 @@
           currentEntry = ''
 
           display()
-        } else if (input.classList.contains('zero') && currentEntry !== '') {
+        } else if (input.classList.contains('zero') && currentEntry !== '' && currentEntry !== '0') {
           currentEntry += input.innerHTML
 
           display()
