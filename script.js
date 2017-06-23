@@ -39,9 +39,6 @@
     if (eqString.length > digitLimit) {
       // if result is larger than digitLimit, display it in exponential notation
       return eval(equation).toExponential(4)
-    } else if (equation.indexOf('.') !== -1 && equation.indexOf('e') === -1) {
-      // if number has a decimal in it, return the result with no more than two digits after the decimal point
-      return eval(equation).toFixed(2)
     } else {
       // if neither of the above are true, evaluate with toString
       return eqString
