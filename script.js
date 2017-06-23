@@ -12,16 +12,25 @@
 
   // maximum number of characters to display
   var digitLimit = 15
+  
+  // access variables for the display sections
+  const logDisplay = document.getElementsByClassName('log-display')
+  const equationDisplay = document.getElementsByClassName('equation-display')
+  const currentDisplay = document.getElementsByClassName('current-display')
 
   // display on the screen
   function display () {
-    const logDisplay = document.getElementsByClassName('log-display')
-    const equationDisplay = document.getElementsByClassName('equation-display')
-    const currentDisplay = document.getElementsByClassName('current-display')
-
     currentDisplay[0].innerHTML = currentEntry
-
-    equationDisplay[0].innerHTML = equationToEvaluate.join('')
+    
+    var eq = equationToEvaluate.join('')
+      
+    if (eq.length > 26){
+      
+      equationDisplay[0].innerHTML = '...' + eq.slice(eq.length - 22)
+      
+    } else {
+      equationDisplay[0].innerHTML = eq
+    }
 
     if (history.length > 0) {
       logDisplay[0].innerHTML = history[history.length - 1].join('')
