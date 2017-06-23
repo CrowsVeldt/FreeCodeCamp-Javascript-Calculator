@@ -89,7 +89,7 @@
             currentEntry += input.innerHTML
             // then push currentEntry to equationToEvaluate
             equationToEvaluate.push(currentEntry)
-
+            // then reset currentEntry
             currentEntry = ''
 
             display()
@@ -97,11 +97,11 @@
         } else if (input.classList.contains('equals')) {
           // if currentEntry is not empty
           if (currentEntry !== '') {
-            // push currentEntry to equationToEvaluate
+            // add currentEntry to equationToEvaluate
             equationToEvaluate.push(currentEntry)
             // evaluate equationToEvaluate and set currentEntry to the result
             currentEntry = evaluate(equationToEvaluate.join(''))
-            // push equationToEvalute to history
+            // add equationToEvalute to history
             history.push(equationToEvaluate)
             // empty equationToEvaluate
             equationToEvaluate = []
@@ -109,15 +109,15 @@
             display()
           }
         } else if (input.classList.contains('previous') && history.length > 0) {
-            // set equationToEvaluate to the last element of history
+          // set equationToEvaluate to the last element of history
           equationToEvaluate = (history[history.length - 1])
-            // remove the last element of history
+          // remove the last element of history
           history.pop()
-            // move last element of equationToEvaluate to currentEntry
+          // move last element of equationToEvaluate to currentEntry
           currentEntry = equationToEvaluate.pop()
 
           display()
-        } else if (input.classList.contains('delete')) {
+        } else if (input.classList.contains('backspace')) {
           // if currentEntry is empty and equationToEvaluate isn't
           if (currentEntry === '' && equationToEvaluate.length > 0) {
             // pop the last element of equationToEvaluate into currentEntry
@@ -131,6 +131,6 @@
       })
     })
   }
-
+  // do all the things!
   input()
 }())

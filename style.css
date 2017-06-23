@@ -9,7 +9,7 @@ body {
   background-color: cadetblue;
 }
 
-#display-section {
+.display-section {
   display: flex;
   flex-direction: column;
   align-items: end;
@@ -69,7 +69,7 @@ body {
   color: black;
 }
 
-#keypad {
+.keypad {
   
   display: flex;
   flex-direction: row;
@@ -94,7 +94,7 @@ body {
   background-color: cadetblue;
 }
 
-#display-section {
+.display-section {
   display: flex;
   flex-direction: column;
   align-items: end;
@@ -130,7 +130,7 @@ body {
 
 }
 
-#keypad {
+.keypad {
   
   display: flex;
   flex-direction: row;
