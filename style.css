@@ -76,7 +76,7 @@ body {
   flex-wrap: wrap;
     
   width: 100vw;
-  height: 66.6vh;
+  height: 50vh;
 
   
 }
@@ -85,40 +85,21 @@ body {
 
 
 @media (min-width: 1024px) {
- 
-  body { 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  
-  background-color: cadetblue;
-}
 
 .display-section {
-  display: flex;
-  flex-direction: column;
-  align-items: end;
   
   width: 80vw;
   height: 26.6vh;
-  
-  background-color: lightgrey;
  
 }
 
 .log-display {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
   
   height: 8.8vh;
 
 }
 
 .current-display {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
   
   height: 17.7vh;
   
@@ -132,13 +113,8 @@ body {
 
 .keypad {
   
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-    
   width: 80vw;
   height: 53.3vh;
-
   
 }
 
