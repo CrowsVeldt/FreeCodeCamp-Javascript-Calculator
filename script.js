@@ -9,7 +9,7 @@
 
   // the number currently being entered
   var currentEntry = ''
-  
+
   // maximum number of characters to display
   var digitLimit = 15
 
@@ -32,16 +32,12 @@
 
   // evaluate the function to display
   function evaluate (equation) {
-    if (equation.length > digitLimit || equation.indexOf('e') !== -1){
+    if (equation.length > digitLimit || equation.indexOf('e') !== -1) {
       console.log('yup')
-      return eval(equation).toExponential(9);
-      
+      return eval(equation).toExponential(digitLimit - 6)
     } else {
-      
       return eval(equation).toFixed(2)
-      
     }
-
   }
 
   // recieve input
