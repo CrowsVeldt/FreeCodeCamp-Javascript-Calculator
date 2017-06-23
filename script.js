@@ -10,7 +10,7 @@
   // the number currently being entered
   var currentEntry = ''
 
-  // maximum number of characters to display
+  // maximum number of characters to display, to prevent overflow of currentEntry
   var digitLimit = 15
 
   // access variables for the display sections
@@ -40,7 +40,7 @@
       // if result is larger than digitLimit, display it in exponential notation
       return eval(equation).toExponential(4)
     } else {
-      // if neither of the above are true, evaluate with toString
+      // return the simple result
       return eqString
     }
   }
@@ -53,7 +53,7 @@
       input.addEventListener('click', function () {
         if (input.classList.contains('clear')) {
           history = []
-          
+
           equationToEvaluate = []
 
           currentEntry = ''
@@ -63,7 +63,7 @@
           currentEntry = ''
 
           display()
-        } else if (input.classList.contains('zero') && currentEntry !== '' && currentEntry !== '0' && currentEntry.length < digitLimit) {
+        } else if (input.classList.contains('zero') && currentEntry !== '0' && currentEntry.length < digitLimit) {
           currentEntry += input.innerHTML
 
           display()
