@@ -54,7 +54,6 @@
 
           display()
         } else if (input.classList.contains('clear-current')) {
-          equationToEvaluate = []
 
           currentEntry = ''
 
