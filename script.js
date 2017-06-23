@@ -33,10 +33,14 @@
   // evaluate the function to display
   function evaluate (equation) {
     if (equation.length > digitLimit || equation.indexOf('e') !== -1) {
-      console.log('yup')
+      // if number is too large, display it in exponential notation
       return eval(equation).toExponential(digitLimit - 6)
-    } else {
+    } else if (equation.indexOf('.') !== -1) {
+      // if number has a decimal in it, return the result with no more than two digits after the decimal point
       return eval(equation).toFixed(2)
+    } else {
+      // if neither of the above are true, evaluate with toString
+      return eval(equation).toString()
     }
   }
 
