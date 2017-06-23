@@ -29,7 +29,7 @@
 
   // evaluate the function to display
   function evaluate (equation) {
-    return eval(equation).toString()
+    return eval(equation).toFixed(2)
   }
 
   // recieve input
