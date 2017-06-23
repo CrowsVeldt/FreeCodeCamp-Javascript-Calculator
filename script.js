@@ -33,6 +33,7 @@
   // evaluate the function to display
   function evaluate (equation) {
     if (equation.length > digitLimit || equation.indexOf('e') !== -1) {
+      // if number is too large, display it in exponential notation
       return eval(equation).toExponential(digitLimit - 6)
     } else if (equation.indexOf('.') !== -1) {
       // if number has a decimal in it, return the result with no more than two digits after the decimal point
