@@ -53,30 +53,20 @@
 
           display()
         } else if (input.classList.contains('number')) {
-          
-          if (currentEntry === '0'){
-            
+          if (currentEntry === '0') {
             currentEntry = input.innerHTML
-            
           } else {
-            
             currentEntry += input.innerHTML
-            
           }
 
           display()
-        } else if (input.classList.contains('decimal') && currentEntry.indexOf('.') === -1) { 
-          
+        } else if (input.classList.contains('decimal') && currentEntry.indexOf('.') === -1) {
           if (currentEntry === '') {
-            
             currentEntry = '0.'
-            
           } else {
-          
             currentEntry += '.'
-            
           }
-          
+
           display()
         } else if (input.classList.contains('operator')) {
           if (currentEntry !== '') {
