@@ -29,10 +29,6 @@
 
   // evaluate the function to display
   function evaluate (equation) {
-    if (equation[0] === '0' && equation[1] !== '.') {
-      return eval(equation.slice(1)).toString()
-    }
-
     return eval(equation).toString()
   }
 
@@ -57,7 +53,16 @@
 
           display()
         } else if (input.classList.contains('number')) {
-          currentEntry += input.innerHTML
+          
+          if (currentEntry === '0'){
+            
+            currentEntry = input.innerHTML
+            
+          } else {
+            
+            currentEntry += input.innerHTML
+            
+          }
 
           display()
         } else if (input.classList.contains('decimal') && currentEntry.indexOf('.') === -1) {
