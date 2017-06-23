@@ -21,16 +21,8 @@
   // display on the screen
   function display () {
     currentDisplay[0].innerHTML = currentEntry
-    
-    var eq = equationToEvaluate.join('')
-      
-    if (eq.length > 26){
-      
-      equationDisplay[0].innerHTML = '...' + eq.slice(eq.length - 22)
-      
-    } else {
-      equationDisplay[0].innerHTML = eq
-    }
+
+    equationDisplay[0].innerHTML = equationToEvaluate.join('')
 
     if (history.length > 0) {
       logDisplay[0].innerHTML = history[history.length - 1].join('')

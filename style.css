@@ -18,6 +18,7 @@ body {
   height: 33.3vh;
   
   background-color: lightgrey;
+  overflow: hidden;
  
 }
 
