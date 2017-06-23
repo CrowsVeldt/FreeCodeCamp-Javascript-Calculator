@@ -10,9 +10,6 @@
   // the number currently being entered
   var currentEntry = ''
 
-  // the last character of the current number
-  var lastCharacter = ''
-
   // display on the screen
   function display () {
     const logDisplay = document.getElementsByClassName('log-display')
@@ -46,7 +43,6 @@
     buttons.forEach(function (input) {
       input.addEventListener('click', function () {
         if (input.classList.contains('clear')) {
-          history = []
 
           equationToEvaluate = []
 
@@ -71,7 +67,7 @@
 
           display()
         } else if (input.classList.contains('operator')) {
-          if (currentEntry !== '' && lastCharacter !== '+' && lastCharacter !== '-' && lastCharacter !== '/' && lastCharacter !== '*') {
+          if (currentEntry !== '') {
             // add the operator to currentEntry
             currentEntry += input.innerHTML
             // then push currentEntry to equationToEvaluate
@@ -115,9 +111,6 @@
 
           display()
         }
-
-        // set 'lastCharacter' to the current last character of 'currentEntry'
-        lastCharacter = currentEntry.charAt(currentEntry.length - 1)
       })
     })
   }
