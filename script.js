@@ -9,6 +9,9 @@
 
   // the number currently being entered
   var currentEntry = ''
+  
+  // maximum number of characters to display
+  var digitLimit = 15
 
   // display on the screen
   function display () {
@@ -48,11 +51,11 @@
           currentEntry = ''
 
           display()
-        } else if (input.classList.contains('zero') && currentEntry !== '' && currentEntry !== '0') {
+        } else if (input.classList.contains('zero') && currentEntry !== '' && currentEntry !== '0' && currentEntry.length < digitLimit) {
           currentEntry += input.innerHTML
 
           display()
-        } else if (input.classList.contains('number')) {
+        } else if (input.classList.contains('number') && currentEntry.length < digitLimit) {
           if (currentEntry === '0') {
             currentEntry = input.innerHTML
           } else {
@@ -60,7 +63,7 @@
           }
 
           display()
-        } else if (input.classList.contains('decimal') && currentEntry.indexOf('.') === -1) {
+        } else if (input.classList.contains('decimal') && currentEntry.indexOf('.') === -1 && currentEntry.length < digitLimit) {
           if (currentEntry === '') {
             currentEntry = '0.'
           } else {
