@@ -1,4 +1,4 @@
-/*Styles for mobile*/
+
 
 body { 
   display: flex;
@@ -15,7 +15,7 @@ body {
   align-items: end;
   
   width: 100vw;
-  height: 33.3vh;
+  height: 26.6vh;
   
   background-color: lightgrey;
   overflow: hidden;
@@ -81,40 +81,26 @@ body {
   
 }
 
-/*Styles for desktop*/
+/*Styles for larger windows*/
 
 
-@media (min-width: 1024px) {
+@media (min-width: 820px) {
 
 .display-section {
   
-  width: 80vw;
-  height: 26.6vh;
- 
-}
-
-.log-display {
-  
-  height: 8.8vh;
-
-}
-
-.current-display {
-  
-  height: 17.7vh;
+  width: 820px;
   
 }
 
 .button { 
   
-  width: 20vw;
+  width: 205px;
 
 }
 
 .keypad {
   
-  width: 80vw;
-  height: 53.3vh;
+  width: 820px;
   
 }
 
