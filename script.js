@@ -37,7 +37,7 @@
     var eqString = eval(equation).toString()
 
     if (eqString.length > digitLimit) {
-      // if number is too large, display it in exponential notation
+      // if result is larger than digitLimit, display it in exponential notation
       return eval(equation).toExponential(4)
     } else if (equation.indexOf('.') !== -1 && equation.indexOf('e') === -1) {
       // if number has a decimal in it, return the result with no more than two digits after the decimal point
