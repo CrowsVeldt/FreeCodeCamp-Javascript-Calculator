@@ -14,7 +14,7 @@
   var digitLimit = 15
 
   // access variables for the display sections
-  const logDisplay = document.getElementsByClassName('log-display')
+  const historyDisplay = document.getElementsByClassName('history-display')
   const equationDisplay = document.getElementsByClassName('equation-display')
   const currentDisplay = document.getElementsByClassName('current-display')
 
@@ -25,9 +25,9 @@
     equationDisplay[0].innerHTML = equationToEvaluate.join('')
 
     if (history.length > 0) {
-      logDisplay[0].innerHTML = history[history.length - 1].join('')
+      historyDisplay[0].innerHTML = history[history.length - 1].join('')
     } else {
-      logDisplay[0].innerHTML = ''
+      historyDisplay[0].innerHTML = ''
     }
   }
 
