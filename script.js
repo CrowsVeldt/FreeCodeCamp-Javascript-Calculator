@@ -52,6 +52,8 @@
     buttons.forEach(function (input) {
       input.addEventListener('click', function () {
         if (input.classList.contains('clear')) {
+          history = []
+          
           equationToEvaluate = []
 
           currentEntry = ''
