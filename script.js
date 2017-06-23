@@ -12,7 +12,7 @@
 
   // maximum number of characters to display
   var digitLimit = 15
-  
+
   // access variables for the display sections
   const logDisplay = document.getElementsByClassName('log-display')
   const equationDisplay = document.getElementsByClassName('equation-display')
@@ -33,15 +33,18 @@
 
   // evaluate the function to display
   function evaluate (equation) {
-    if (equation.length > digitLimit || equation.indexOf('e') !== -1) {
+    // get the simple result of the equation
+    var eqString = eval(equation).toString()
+
+    if (eqString.length > digitLimit) {
       // if number is too large, display it in exponential notation
-      return eval(equation).toExponential(digitLimit - 6)
-    } else if (equation.indexOf('.') !== -1) {
+      return eval(equation).toExponential(4)
+    } else if (equation.indexOf('.') !== -1 && equation.indexOf('e') === -1) {
       // if number has a decimal in it, return the result with no more than two digits after the decimal point
       return eval(equation).toFixed(2)
     } else {
       // if neither of the above are true, evaluate with toString
-      return eval(equation).toString()
+      return eqString
     }
   }
 
