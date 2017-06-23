@@ -32,7 +32,16 @@
 
   // evaluate the function to display
   function evaluate (equation) {
-    return eval(equation).toFixed(2)
+    if (equation.length > digitLimit || equation.indexOf('e') !== -1){
+      console.log('yup')
+      return eval(equation).toExponential(9);
+      
+    } else {
+      
+      return eval(equation).toFixed(2)
+      
+    }
+
   }
 
   // recieve input
