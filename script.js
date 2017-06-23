@@ -117,7 +117,7 @@
         } else if (input.classList.contains('delete')) {
           // if currentEntry is empty and equationToEvaluate isn't
           if (currentEntry === '' && equationToEvaluate.length > 0) {
-            // pop the last elemt of equationToEvaluate into currentEntry
+            // pop the last element of equationToEvaluate into currentEntry
             currentEntry = equationToEvaluate.pop()
           }
           // remove the last charecter of currentEntry
