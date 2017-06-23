@@ -43,14 +43,12 @@
     buttons.forEach(function (input) {
       input.addEventListener('click', function () {
         if (input.classList.contains('clear')) {
-
           equationToEvaluate = []
 
           currentEntry = ''
 
           display()
         } else if (input.classList.contains('clear-current')) {
-
           currentEntry = ''
 
           display()
