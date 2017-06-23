@@ -65,9 +65,18 @@
           }
 
           display()
-        } else if (input.classList.contains('decimal') && currentEntry.indexOf('.') === -1) {
-          currentEntry += input.innerHTML
-
+        } else if (input.classList.contains('decimal') && currentEntry.indexOf('.') === -1) { 
+          
+          if (currentEntry === '') {
+            
+            currentEntry = '0.'
+            
+          } else {
+          
+            currentEntry += '.'
+            
+          }
+          
           display()
         } else if (input.classList.contains('operator')) {
           if (currentEntry !== '') {
