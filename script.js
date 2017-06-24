@@ -117,7 +117,7 @@
           currentEntry = equationToEvaluate.pop()
 
           display()
-        } else if (input.classList.contains('backspace')) {
+        } else if (input.classList.contains('backspace') && currentEntry.indexOf('e') === -1) {
           // if currentEntry is empty and equationToEvaluate isn't
           if (currentEntry === '' && equationToEvaluate.length > 0) {
             // pop the last element of equationToEvaluate into currentEntry
