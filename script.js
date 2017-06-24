@@ -44,29 +44,119 @@
       return eqString
     }
   }
-
-  // recieve input
-  function input () {
-    const buttons = document.querySelectorAll('button')
+   
+//  // keyboard access
+//  document.addEventListener('keypress', function (event) {
+//    if (event.charCode !== 0){
+//      // console.log(event.charCode)
+//      input(event.charCode)
+//    }
+//
+//  })
+  
+  function action(input){
     
+    switch (input) {
+        
+      case 'clear':
+        history = []
+
+        equationToEvaluate = []
+
+        currentEntry = ''
+
+        display()
+        break;
+        
+      case 'clear-current':
+        currentEntry = ''
+
+        display()
+        break;
+        
+      case 'zero':
+        currentEntry += '0'
+
+        display()
+        break;
+        
+      case 'decimal':
+        
+        if (currentEntry === '') {
+          currentEntry = '0.'
+        } else {
+          currentEntry += '.'
+        }
+
+        display()
+        break;
+        
+      case 'equals':
+        // add currentEntry to equationToEvaluate
+        equationToEvaluate.push(currentEntry)
+        // evaluate equationToEvaluate and set currentEntry to the result
+        currentEntry = evaluate(equationToEvaluate.join(''))
+        // add equationToEvalute to history
+        history.push(equationToEvaluate)
+        // empty equationToEvaluate
+        equationToEvaluate = []
+
+        display()
+        break;
+        
+      case 'previous':
+        // set equationToEvaluate to the last element of history
+        equationToEvaluate = (history[history.length - 1])
+        // remove the last element of history
+        history.pop()
+        // move last element of equationToEvaluate to currentEntry
+        currentEntry = equationToEvaluate.pop()
+
+        display()
+        break;
+        
+      case 'backspace':
+        // if currentEntry is empty and equationToEvaluate isn't
+        if (currentEntry === '' && equationToEvaluate.length > 0) {
+          // pop the last element of equationToEvaluate into currentEntry
+          currentEntry = equationToEvaluate.pop()
+        }
+        // remove the last charecter of currentEntry
+        currentEntry = currentEntry.slice(0, -1)
+
+        display()
+        break;
+        
+      case 'number':
+        // need to make this work for any number
+        break;
+        
+      case 'operator':
+        // need to make this work for any operator
+        break;
+        
+        
+    }
+    
+  }
+  // recieve input
+  function acceptInput () {
+    const buttons = document.querySelectorAll('button')
+
     buttons.forEach(function (buttonPressed) {
       buttonPressed.addEventListener('click', function () {
         if (buttonPressed.classList.contains('clear')) {
-          history = []
-
-          equationToEvaluate = []
-
-          currentEntry = ''
-
-          display()
+          
+          action('clear')
+          
         } else if (buttonPressed.classList.contains('clear-current')) {
-          currentEntry = ''
-
-          display()
+          
+          action('clear-current')
+          
         } else if (buttonPressed.classList.contains('zero') && currentEntry !== '0' && currentEntry.length < digitLimit) {
-          currentEntry += buttonPressed.innerHTML
-
-          display()
+          
+          action('zero')
+          
         } else if (buttonPressed.classList.contains('number') && currentEntry.length < digitLimit) {
           if (currentEntry === '0') {
             currentEntry = buttonPressed.innerHTML
@@ -76,13 +166,9 @@
 
           display()
         } else if (buttonPressed.classList.contains('decimal') && currentEntry.indexOf('.') === -1 && currentEntry.length < digitLimit) {
-          if (currentEntry === '') {
-            currentEntry = '0.'
-          } else {
-            currentEntry += '.'
-          }
-
-          display()
+          
+          action('decimal')
+          
         } else if (buttonPressed.classList.contains('operator')) {
           if (currentEntry !== '') {
             // add the operator to currentEntry
@@ -97,41 +183,23 @@
         } else if (buttonPressed.classList.contains('equals')) {
           // if currentEntry is not empty
           if (currentEntry !== '') {
-            // add currentEntry to equationToEvaluate
-            equationToEvaluate.push(currentEntry)
-            // evaluate equationToEvaluate and set currentEntry to the result
-            currentEntry = evaluate(equationToEvaluate.join(''))
-            // add equationToEvalute to history
-            history.push(equationToEvaluate)
-            // empty equationToEvaluate
-            equationToEvaluate = []
-
-            display()
+          
+            action('equals')
+            
           }
         } else if (buttonPressed.classList.contains('previous') && history.length > 0) {
-          // set equationToEvaluate to the last element of history
-          equationToEvaluate = (history[history.length - 1])
-          // remove the last element of history
-          history.pop()
-          // move last element of equationToEvaluate to currentEntry
-          currentEntry = equationToEvaluate.pop()
-
-          display()
+          
+          action('previous')
+          
         } else if (buttonPressed.classList.contains('backspace') && currentEntry.indexOf('e') === -1) {
-          // if currentEntry is empty and equationToEvaluate isn't
-          if (currentEntry === '' && equationToEvaluate.length > 0) {
-            // pop the last element of equationToEvaluate into currentEntry
-            currentEntry = equationToEvaluate.pop()
-          }
-          // remove the last charecter of currentEntry
-          currentEntry = currentEntry.slice(0, -1)
-
-          display()
+       
+          action('backspace')
+          
         }
       })
     })
   }
 
   // do all the things!
-  input()
+  acceptInput()
 }())
