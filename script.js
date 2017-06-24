@@ -45,36 +45,23 @@
     }
   }
 
-//  // keyboard access
-//  document.addEventListener('keypress', function (event) {
-//    if (event.charCode !== 0){
-//      // console.log(event.charCode)
-//      input(event.charCode)
-//    }
-//
-//  })
-
-  function action (input) {
+  // do things based on the input recieved
+  function doStuffWithUserInput (input) {
     switch (input) {
       case 'clear':
         history = []
-
         equationToEvaluate = []
-
         currentEntry = ''
-
         display()
         break
 
       case 'clear-current':
         currentEntry = ''
-
         display()
         break
 
       case 'zero':
         currentEntry += '0'
-
         display()
         break
 
@@ -85,7 +72,6 @@
         } else {
           currentEntry += '.'
         }
-
         display()
         break
 
@@ -98,7 +84,6 @@
         history.push(equationToEvaluate)
         // empty equationToEvaluate
         equationToEvaluate = []
-
         display()
         break
 
@@ -109,7 +94,6 @@
         history.pop()
         // move last element of equationToEvaluate to currentEntry
         currentEntry = equationToEvaluate.pop()
-
         display()
         break
 
@@ -121,66 +105,69 @@
         }
         // remove the last charecter of currentEntry
         currentEntry = currentEntry.slice(0, -1)
-
         display()
         break
 
-      case 'number':
-        // need to make this work for any number
+      case '1':
+      case '2':
+      case '3':
+      case '4':
+      case '5':
+      case '6':
+      case '7':
+      case '8':
+      case '9':
+        if (currentEntry === '0') {
+          currentEntry = input
+        } else {
+          currentEntry += input
+        }
+        display()
         break
 
-      case 'operator':
-        // need to make this work for any operator
+      case '+':
+      case '-':
+      case '/':
+      case '*':
+          // add the operator to currentEntry
+        currentEntry += input
+          // then push currentEntry to equationToEvaluate
+        equationToEvaluate.push(currentEntry)
+          // then reset currentEntry
+        currentEntry = ''
+        display()
         break
     }
   }
   // recieve input
-  function acceptInput () {
+  function acceptUserInput () {
     const buttons = document.querySelectorAll('button')
 
     buttons.forEach(function (buttonPressed) {
       buttonPressed.addEventListener('click', function () {
         if (buttonPressed.classList.contains('clear')) {
-          action('clear')
+          doStuffWithUserInput('clear')
         } else if (buttonPressed.classList.contains('clear-current')) {
-          action('clear-current')
+          doStuffWithUserInput('clear-current')
         } else if (buttonPressed.classList.contains('zero') && currentEntry !== '0' && currentEntry.length < digitLimit) {
-          action('zero')
+          doStuffWithUserInput('zero')
         } else if (buttonPressed.classList.contains('number') && currentEntry.length < digitLimit) {
-          if (currentEntry === '0') {
-            currentEntry = buttonPressed.innerHTML
-          } else {
-            currentEntry += buttonPressed.innerHTML
-          }
-
-          display()
+          doStuffWithUserInput(buttonPressed.innerHTML)
         } else if (buttonPressed.classList.contains('decimal') && currentEntry.indexOf('.') === -1 && currentEntry.length < digitLimit) {
-          action('decimal')
-        } else if (buttonPressed.classList.contains('operator')) {
-          if (currentEntry !== '') {
-            // add the operator to currentEntry
-            currentEntry += buttonPressed.innerHTML
-            // then push currentEntry to equationToEvaluate
-            equationToEvaluate.push(currentEntry)
-            // then reset currentEntry
-            currentEntry = ''
-
-            display()
-          }
-        } else if (buttonPressed.classList.contains('equals')) {
-          // if currentEntry is not empty
-          if (currentEntry !== '') {
-            action('equals')
-          }
+          doStuffWithUserInput('decimal')
+        } else if (buttonPressed.classList.contains('operator') && currentEntry !== '') {
+          doStuffWithUserInput(buttonPressed.innerHTML)
+        } else if (buttonPressed.classList.contains('equals') && currentEntry !== '') {
+          doStuffWithUserInput('equals')
         } else if (buttonPressed.classList.contains('previous') && history.length > 0) {
-          action('previous')
+          doStuffWithUserInput('previous')
         } else if (buttonPressed.classList.contains('backspace') && currentEntry.indexOf('e') === -1) {
-          action('backspace')
+          doStuffWithUserInput('backspace')
         }
       })
     })
   }
 
   // do all the things!
-  acceptInput()
+  acceptUserInput()
 }())
