@@ -46,8 +46,8 @@
   }
 
   // do things based on the input recieved
-  function doStuffWithUserInput (input) {
-    switch (input) {
+  function doStuffWithUserInput (userInput) {
+    switch (userInput) {
       case 'clear':
         history = []
         equationToEvaluate = []
@@ -118,9 +118,9 @@
       case '8':
       case '9':
         if (currentEntry === '0') {
-          currentEntry = input
+          currentEntry = userInput
         } else {
-          currentEntry += input
+          currentEntry += userInput
         }
         display()
         break
@@ -130,7 +130,7 @@
       case '/':
       case '*':
           // add the operator to currentEntry
-        currentEntry += input
+        currentEntry += userInput
           // then push currentEntry to equationToEvaluate
         equationToEvaluate.push(currentEntry)
           // then reset currentEntry
@@ -142,6 +142,15 @@
   // recieve input
   function acceptUserInput () {
     const buttons = document.querySelectorAll('button')
+    
+//  // keyboard access
+//  document.addEventListener('keypress', function (event) {
+//    if (event.charCode !== 0){
+//      // console.log(event.charCode)
+//      input(event.charCode)
+//    }
+//
+//  })
 
     buttons.forEach(function (buttonPressed) {
       buttonPressed.addEventListener('click', function () {
