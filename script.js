@@ -11,7 +11,7 @@
   var currentEntry = ''
 
   // maximum number of characters to display, to prevent overflow of currentEntry
-  var digitLimit = 15
+  const digitLimit = 15
 
   // access variables for the display sections
   const historyDisplay = document.getElementsByClassName('history-display')
@@ -48,10 +48,10 @@
   // recieve input
   function input () {
     const buttons = document.querySelectorAll('button')
-
-    buttons.forEach(function (input) {
-      input.addEventListener('click', function () {
-        if (input.classList.contains('clear')) {
+    
+    buttons.forEach(function (buttonPressed) {
+      buttonPressed.addEventListener('click', function () {
+        if (buttonPressed.classList.contains('clear')) {
           history = []
 
           equationToEvaluate = []
@@ -59,23 +59,23 @@
           currentEntry = ''
 
           display()
-        } else if (input.classList.contains('clear-current')) {
+        } else if (buttonPressed.classList.contains('clear-current')) {
           currentEntry = ''
 
           display()
-        } else if (input.classList.contains('zero') && currentEntry !== '0' && currentEntry.length < digitLimit) {
-          currentEntry += input.innerHTML
+        } else if (buttonPressed.classList.contains('zero') && currentEntry !== '0' && currentEntry.length < digitLimit) {
+          currentEntry += buttonPressed.innerHTML
 
           display()
-        } else if (input.classList.contains('number') && currentEntry.length < digitLimit) {
+        } else if (buttonPressed.classList.contains('number') && currentEntry.length < digitLimit) {
           if (currentEntry === '0') {
-            currentEntry = input.innerHTML
+            currentEntry = buttonPressed.innerHTML
           } else {
-            currentEntry += input.innerHTML
+            currentEntry += buttonPressed.innerHTML
           }
 
           display()
-        } else if (input.classList.contains('decimal') && currentEntry.indexOf('.') === -1 && currentEntry.length < digitLimit) {
+        } else if (buttonPressed.classList.contains('decimal') && currentEntry.indexOf('.') === -1 && currentEntry.length < digitLimit) {
           if (currentEntry === '') {
             currentEntry = '0.'
           } else {
@@ -83,10 +83,10 @@
           }
 
           display()
-        } else if (input.classList.contains('operator')) {
+        } else if (buttonPressed.classList.contains('operator')) {
           if (currentEntry !== '') {
             // add the operator to currentEntry
-            currentEntry += input.innerHTML
+            currentEntry += buttonPressed.innerHTML
             // then push currentEntry to equationToEvaluate
             equationToEvaluate.push(currentEntry)
             // then reset currentEntry
@@ -94,7 +94,7 @@
 
             display()
           }
-        } else if (input.classList.contains('equals')) {
+        } else if (buttonPressed.classList.contains('equals')) {
           // if currentEntry is not empty
           if (currentEntry !== '') {
             // add currentEntry to equationToEvaluate
@@ -108,7 +108,7 @@
 
             display()
           }
-        } else if (input.classList.contains('previous') && history.length > 0) {
+        } else if (buttonPressed.classList.contains('previous') && history.length > 0) {
           // set equationToEvaluate to the last element of history
           equationToEvaluate = (history[history.length - 1])
           // remove the last element of history
@@ -117,7 +117,7 @@
           currentEntry = equationToEvaluate.pop()
 
           display()
-        } else if (input.classList.contains('backspace') && currentEntry.indexOf('e') === -1) {
+        } else if (buttonPressed.classList.contains('backspace') && currentEntry.indexOf('e') === -1) {
           // if currentEntry is empty and equationToEvaluate isn't
           if (currentEntry === '' && equationToEvaluate.length > 0) {
             // pop the last element of equationToEvaluate into currentEntry
@@ -131,6 +131,7 @@
       })
     })
   }
+
   // do all the things!
   input()
 }())
