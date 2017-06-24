@@ -44,7 +44,7 @@
       return eqString
     }
   }
-   
+
 //  // keyboard access
 //  document.addEventListener('keypress', function (event) {
 //    if (event.charCode !== 0){
@@ -53,11 +53,9 @@
 //    }
 //
 //  })
-  
-  function action(input){
-    
+
+  function action (input) {
     switch (input) {
-        
       case 'clear':
         history = []
 
@@ -66,22 +64,22 @@
         currentEntry = ''
 
         display()
-        break;
-        
+        break
+
       case 'clear-current':
         currentEntry = ''
 
         display()
-        break;
-        
+        break
+
       case 'zero':
         currentEntry += '0'
 
         display()
-        break;
-        
+        break
+
       case 'decimal':
-        
+
         if (currentEntry === '') {
           currentEntry = '0.'
         } else {
@@ -89,8 +87,8 @@
         }
 
         display()
-        break;
-        
+        break
+
       case 'equals':
         // add currentEntry to equationToEvaluate
         equationToEvaluate.push(currentEntry)
@@ -102,8 +100,8 @@
         equationToEvaluate = []
 
         display()
-        break;
-        
+        break
+
       case 'previous':
         // set equationToEvaluate to the last element of history
         equationToEvaluate = (history[history.length - 1])
@@ -113,8 +111,8 @@
         currentEntry = equationToEvaluate.pop()
 
         display()
-        break;
-        
+        break
+
       case 'backspace':
         // if currentEntry is empty and equationToEvaluate isn't
         if (currentEntry === '' && equationToEvaluate.length > 0) {
@@ -125,19 +123,16 @@
         currentEntry = currentEntry.slice(0, -1)
 
         display()
-        break;
-        
+        break
+
       case 'number':
         // need to make this work for any number
-        break;
-        
+        break
+
       case 'operator':
         // need to make this work for any operator
-        break;
-        
-        
+        break
     }
-    
   }
   // recieve input
   function acceptInput () {
@@ -146,17 +141,11 @@
     buttons.forEach(function (buttonPressed) {
       buttonPressed.addEventListener('click', function () {
         if (buttonPressed.classList.contains('clear')) {
-          
           action('clear')
-          
         } else if (buttonPressed.classList.contains('clear-current')) {
-          
           action('clear-current')
-          
         } else if (buttonPressed.classList.contains('zero') && currentEntry !== '0' && currentEntry.length < digitLimit) {
-          
           action('zero')
-          
         } else if (buttonPressed.classList.contains('number') && currentEntry.length < digitLimit) {
           if (currentEntry === '0') {
             currentEntry = buttonPressed.innerHTML
@@ -166,9 +155,7 @@
 
           display()
         } else if (buttonPressed.classList.contains('decimal') && currentEntry.indexOf('.') === -1 && currentEntry.length < digitLimit) {
-          
           action('decimal')
-          
         } else if (buttonPressed.classList.contains('operator')) {
           if (currentEntry !== '') {
             // add the operator to currentEntry
@@ -183,18 +170,12 @@
         } else if (buttonPressed.classList.contains('equals')) {
           // if currentEntry is not empty
           if (currentEntry !== '') {
-          
             action('equals')
-            
           }
         } else if (buttonPressed.classList.contains('previous') && history.length > 0) {
-          
           action('previous')
-          
         } else if (buttonPressed.classList.contains('backspace') && currentEntry.indexOf('e') === -1) {
-       
           action('backspace')
-          
         }
       })
     })
