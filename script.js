@@ -20,7 +20,16 @@
 
   // display on the screen
   function display () {
-    currentDisplay[0].innerHTML = currentEntry
+    
+    if (currentEntry === ''){
+      
+      currentDisplay[0].innerHTML = '0'
+      
+    } else {
+      
+      currentDisplay[0].innerHTML = currentEntry
+      
+    }
 
     equationDisplay[0].innerHTML = equationToEvaluate.join('')
 
@@ -61,17 +70,12 @@
         break
 
       case 'zero':
-        currentEntry += '0'
+        currentEntry += ''
         display()
         break
 
       case 'decimal':
-
-        if (currentEntry === '') {
-          currentEntry = '0.'
-        } else {
-          currentEntry += '.'
-        }
+        currentEntry += '.'
         display()
         break
 
@@ -170,13 +174,14 @@
           doStuffWithUserInput('equals')
         } else if (buttonPressed.classList.contains('previous') && history.length > 0) {
           doStuffWithUserInput('previous')
-        } else if (buttonPressed.classList.contains('backspace') && currentEntry.indexOf('e') === -1) {
+        } else if (buttonPressed.classList.contains('backspace') && currentEntry.indexOf('e') === -1 && currentEntry !== '0') {
           doStuffWithUserInput('backspace')
         }
       })
     })
   }
-
+  
+  display()
   // do all the things!
   acceptUserInput()
 }())
