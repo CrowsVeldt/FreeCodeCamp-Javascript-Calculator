@@ -142,49 +142,6 @@
     }
   }
   
-  
-
-          
-    // keyboard access
-    document.addEventListener('keypress', function (event) {
-      if (event.charCode !== 0){
-
-        // console.log(event.key)
-        switch (event.charCode){
-          case 48:
-            break
-          case 49:
-            //statement for 1
-            break
-          case 50:
-            //statement for 2
-            break
-          case 51:
-            //statement for 3
-            break
-          case 52:
-            //statement for 4
-            break
-          case 53:
-            //statement for 5
-            break
-          case 54:
-            //statement for 6
-            break
-          case 55:
-            //statement for 7
-            break
-          case 56:
-            //statement for 8
-            break
-          case 57:
-            //statement for 9
-            break
-
-        }
-      }
-    })
-  
   // recieve input
   function acceptUserInput () {
     buttons.forEach(function (buttonPressed) {
