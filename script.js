@@ -13,22 +13,20 @@
   // maximum number of characters to display, to prevent overflow of currentEntry
   const digitLimit = 15
 
-  // access variables for the display sections
+  // access variables for the HTML elements
   const historyDisplay = document.getElementsByClassName('history-display')
   const equationDisplay = document.getElementsByClassName('equation-display')
   const currentDisplay = document.getElementsByClassName('current-display')
+  const buttons = document.querySelectorAll('button')
+
 
   // display on the screen
   function display () {
-    
-    if (currentEntry === ''){
-      
-      currentDisplay[0].innerHTML = '0'
-      
-    } else {
-      
+    if (currentEntry === '') {
+      currentEntry = '0'
       currentDisplay[0].innerHTML = currentEntry
-      
+    } else {
+      currentDisplay[0].innerHTML = currentEntry
     }
 
     equationDisplay[0].innerHTML = equationToEvaluate.join('')
@@ -103,7 +101,7 @@
 
       case 'backspace':
         // if currentEntry is empty and equationToEvaluate isn't
-        if (currentEntry === '' && equationToEvaluate.length > 0) {
+        if (currentEntry === '0' && equationToEvaluate.length > 0) {
           // pop the last element of equationToEvaluate into currentEntry
           currentEntry = equationToEvaluate.pop()
         }
@@ -143,19 +141,52 @@
         break
     }
   }
+  
+  
+
+          
+    // keyboard access
+    document.addEventListener('keypress', function (event) {
+      if (event.charCode !== 0){
+
+        // console.log(event.key)
+        switch (event.charCode){
+          case 48:
+            break
+          case 49:
+            //statement for 1
+            break
+          case 50:
+            //statement for 2
+            break
+          case 51:
+            //statement for 3
+            break
+          case 52:
+            //statement for 4
+            break
+          case 53:
+            //statement for 5
+            break
+          case 54:
+            //statement for 6
+            break
+          case 55:
+            //statement for 7
+            break
+          case 56:
+            //statement for 8
+            break
+          case 57:
+            //statement for 9
+            break
+
+        }
+      }
+    })
+  
   // recieve input
   function acceptUserInput () {
-    const buttons = document.querySelectorAll('button')
-    
-//  // keyboard access
-//  document.addEventListener('keypress', function (event) {
-//    if (event.charCode !== 0){
-//      // console.log(event.charCode)
-//      input(event.charCode)
-//    }
-//
-//  })
-
     buttons.forEach(function (buttonPressed) {
       buttonPressed.addEventListener('click', function () {
         if (buttonPressed.classList.contains('clear')) {
@@ -174,13 +205,13 @@
           doStuffWithUserInput('equals')
         } else if (buttonPressed.classList.contains('previous') && history.length > 0) {
           doStuffWithUserInput('previous')
-        } else if (buttonPressed.classList.contains('backspace') && currentEntry.indexOf('e') === -1 && currentEntry !== '0') {
+        } else if (buttonPressed.classList.contains('backspace') && currentEntry.indexOf('e') === -1) {
           doStuffWithUserInput('backspace')
         }
       })
     })
   }
-  
+
   display()
   // do all the things!
   acceptUserInput()
