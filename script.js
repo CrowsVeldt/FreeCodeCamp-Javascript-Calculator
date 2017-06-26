@@ -9,9 +9,13 @@
 
   // the number currently being entered
   var currentEntry = ''
-
+  
+  // the total after evaluation
+  var total = ''
+  
   // maximum number of characters to display, to prevent overflow of currentEntry
   const digitLimit = 15
+  
 
   // access variables for the HTML elements
   const historyDisplay = document.getElementsByClassName('history-display')
@@ -19,10 +23,13 @@
   const currentDisplay = document.getElementsByClassName('current-display')
   const buttons = document.querySelectorAll('button')
 
-
   // display on the screen
   function display () {
-    if (currentEntry === '') {
+    if (total !== '') {
+        
+      currentDisplay[0].innerHTML = '<b>' + total + '</b>'
+        
+    } else if (currentEntry === '') {
       currentEntry = '0'
       currentDisplay[0].innerHTML = currentEntry
     } else {
@@ -56,6 +63,7 @@
   function doStuffWithUserInput (userInput) {
     switch (userInput) {
       case 'clear':
+        total = ''
         history = []
         equationToEvaluate = []
         currentEntry = ''
@@ -63,29 +71,44 @@
         break
 
       case 'clear-current':
+        total = ''
         currentEntry = ''
         display()
         break
 
       case 'zero':
-        currentEntry += ''
+        total = ''
+        currentEntry += '0'
         display()
         break
 
       case 'decimal':
-        currentEntry += '.'
+        if (total !== ''){
+          
+          currentEntry = total
+          total = ''
+          
+        } 
+        
+        if (currentEntry.indexOf('.') === -1){
+          
+          currentEntry += '.'
+          Q
+        }
+      
         display()
         break
 
       case 'equals':
         // add currentEntry to equationToEvaluate
         equationToEvaluate.push(currentEntry)
-        // evaluate equationToEvaluate and set currentEntry to the result
-        currentEntry = evaluate(equationToEvaluate.join(''))
+        // evaluate equationToEvaluate and set total to the result
+        total = evaluate(equationToEvaluate.join(''))
         // add equationToEvalute to history
         history.push(equationToEvaluate)
         // empty equationToEvaluate
         equationToEvaluate = []
+        currentEntry = ''
         display()
         break
 
@@ -100,7 +123,6 @@
         break
 
       case 'backspace':
-        // if currentEntry is empty and equationToEvaluate isn't
         if (currentEntry === '0' && equationToEvaluate.length > 0) {
           // pop the last element of equationToEvaluate into currentEntry
           currentEntry = equationToEvaluate.pop()
@@ -119,7 +141,12 @@
       case '7':
       case '8':
       case '9':
-        if (currentEntry === '0') {
+        if (total !== '') {
+          
+          total = ''
+          currentEntry += userInput
+          
+        } else if (currentEntry === '0') {
           currentEntry = userInput
         } else {
           currentEntry += userInput
@@ -131,6 +158,12 @@
       case '-':
       case '/':
       case '*':
+        if (total !== ''){
+          
+          currentEntry = total
+          total = ''
+          
+        }
           // add the operator to currentEntry
         currentEntry += userInput
           // then push currentEntry to equationToEvaluate
@@ -141,7 +174,7 @@
         break
     }
   }
-  
+
   // recieve input
   function acceptUserInput () {
     buttons.forEach(function (buttonPressed) {
@@ -156,9 +189,9 @@
           doStuffWithUserInput(buttonPressed.innerHTML)
         } else if (buttonPressed.classList.contains('decimal') && currentEntry.indexOf('.') === -1 && currentEntry.length < digitLimit) {
           doStuffWithUserInput('decimal')
-        } else if (buttonPressed.classList.contains('operator') && currentEntry !== '') {
+        } else if (buttonPressed.classList.contains('operator') && currentEntry !== '' || total !== '') {
           doStuffWithUserInput(buttonPressed.innerHTML)
-        } else if (buttonPressed.classList.contains('equals') && currentEntry !== '') {
+        } else if (buttonPressed.classList.contains('equals') && currentEntry !== '' && total === '') {
           doStuffWithUserInput('equals')
         } else if (buttonPressed.classList.contains('previous') && history.length > 0) {
           doStuffWithUserInput('previous')
