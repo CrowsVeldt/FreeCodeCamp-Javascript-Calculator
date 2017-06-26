@@ -9,13 +9,12 @@
 
   // the number currently being entered
   var currentEntry = ''
-  
+
   // the total after evaluation
   var total = ''
-  
+
   // maximum number of characters to display, to prevent overflow of currentEntry
   const digitLimit = 15
-  
 
   // access variables for the HTML elements
   const historyDisplay = document.getElementsByClassName('history-display')
@@ -26,9 +25,7 @@
   // display on the screen
   function display () {
     if (total !== '') {
-        
       currentDisplay[0].innerHTML = '<b>' + total + '</b>'
-        
     } else if (currentEntry === '') {
       currentEntry = '0'
       currentDisplay[0].innerHTML = currentEntry
@@ -83,19 +80,15 @@
         break
 
       case 'decimal':
-        if (total !== ''){
-          
+        if (total !== '') {
           currentEntry = total
           total = ''
-          
-        } 
-        
-        if (currentEntry.indexOf('.') === -1){
-          
-          currentEntry += '.'
-          Q
         }
-      
+
+        if (currentEntry.indexOf('.') === -1) {
+          currentEntry += '.'
+        }
+
         display()
         break
 
@@ -113,6 +106,7 @@
         break
 
       case 'previous':
+        total = ''
         // set equationToEvaluate to the last element of history
         equationToEvaluate = (history[history.length - 1])
         // remove the last element of history
@@ -123,6 +117,10 @@
         break
 
       case 'backspace':
+        if (total !== '') {
+          currentEntry = total
+          total = ''
+        }
         if (currentEntry === '0' && equationToEvaluate.length > 0) {
           // pop the last element of equationToEvaluate into currentEntry
           currentEntry = equationToEvaluate.pop()
@@ -142,10 +140,8 @@
       case '8':
       case '9':
         if (total !== '') {
-          
           total = ''
           currentEntry += userInput
-          
         } else if (currentEntry === '0') {
           currentEntry = userInput
         } else {
@@ -158,11 +154,9 @@
       case '-':
       case '/':
       case '*':
-        if (total !== ''){
-          
+        if (total !== '') {
           currentEntry = total
           total = ''
-          
         }
           // add the operator to currentEntry
         currentEntry += userInput
@@ -189,8 +183,10 @@
           doStuffWithUserInput(buttonPressed.innerHTML)
         } else if (buttonPressed.classList.contains('decimal') && currentEntry.indexOf('.') === -1 && currentEntry.length < digitLimit) {
           doStuffWithUserInput('decimal')
-        } else if (buttonPressed.classList.contains('operator') && currentEntry !== '' || total !== '') {
-          doStuffWithUserInput(buttonPressed.innerHTML)
+        } else if (buttonPressed.classList.contains('operator')) {
+          if (currentEntry !== '' || total !== '') {
+            doStuffWithUserInput(buttonPressed.innerHTML)
+          }
         } else if (buttonPressed.classList.contains('equals') && currentEntry !== '' && total === '') {
           doStuffWithUserInput('equals')
         } else if (buttonPressed.classList.contains('previous') && history.length > 0) {
