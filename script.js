@@ -14,19 +14,18 @@
   var total = ''
 
   // maximum number of characters to display, to prevent overflow of currentEntry
-  const digitLimit = 15
+  const digitLimit = 12
 
   // access variables for the HTML elements
   const historyDisplay = document.getElementsByClassName('history-display')
   const equationDisplay = document.getElementsByClassName('equation-display')
   const currentDisplay = document.getElementsByClassName('current-display')
   const buttons = document.querySelectorAll('button')
-  
-  // code to format numbers thanks to Elias Zamaria on StackOverflow (https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript)
-  function numberWithCommas(n) {
-    var parts = n.toString().split(".");
-    console.log(parts)
-    return parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (parts[1] ? "." + parts[1] : "");
+
+  // code to format numbers - thanks to Elias Zamaria on StackOverflow (https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript)
+  function numberWithCommas (number) {
+    var parts = number.split('.')
+    return parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',') + (parts[1] ? '.' + parts[1] : '')
   }
 
   // display on the screen
@@ -51,19 +50,19 @@
 
   // evaluate the function to display
   function evaluate (equation) {
-    // get the simple result of the equation
+    
     var eqString = eval(equation).toString()
+     
+    if (equation.toString().indexOf('.') !== -1 && equation.toString().indexOf('e') === -1) {
+      return eval(equation).toFixed(2)
+    }
 
-//    if (eqString.length > digitLimit) {
-//      // if result is larger than digitLimit, display it in exponential notation
-//      return eval(equation).toExponential(4)
-//    } else {
-//      // return the simple result
-//      return eqString
-//    }
-    
-    return eqString
-    
+    if (eqString.length > digitLimit) {
+      // if result is larger than digitLimit, display it in exponential notation
+      return eval(equation).toExponential(4)
+    }
+
+    return eval(equation).toString()
   }
 
   // do things based on the input recieved
