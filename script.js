@@ -50,9 +50,9 @@
 
   // evaluate the function to display
   function evaluate (equation) {
-    
     var eqString = eval(equation).toString()
-     
+
+    // if number has a decimal point, display only 2 numbers past it
     if (equation.toString().indexOf('.') !== -1 && equation.toString().indexOf('e') === -1) {
       return eval(equation).toFixed(2)
     }
