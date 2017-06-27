@@ -21,22 +21,29 @@
   const equationDisplay = document.getElementsByClassName('equation-display')
   const currentDisplay = document.getElementsByClassName('current-display')
   const buttons = document.querySelectorAll('button')
+  
+  // code to format numbers thanks to Elias Zamaria on StackOverflow (https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript)
+  function numberWithCommas(n) {
+    var parts = n.toString().split(".");
+    console.log(parts)
+    return parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (parts[1] ? "." + parts[1] : "");
+  }
 
   // display on the screen
   function display () {
     if (total !== '') {
-      currentDisplay[0].innerHTML = '<b>' + total + '</b>'
+      currentDisplay[0].innerHTML = '<b>' + numberWithCommas(total) + '</b>'
     } else if (currentEntry === '') {
       currentEntry = '0'
-      currentDisplay[0].innerHTML = currentEntry
+      currentDisplay[0].innerHTML = numberWithCommas(currentEntry)
     } else {
-      currentDisplay[0].innerHTML = currentEntry
+      currentDisplay[0].innerHTML = numberWithCommas(currentEntry)
     }
 
-    equationDisplay[0].innerHTML = equationToEvaluate.join('')
+    equationDisplay[0].innerHTML = numberWithCommas(equationToEvaluate.join(''))
 
     if (history.length > 0) {
-      historyDisplay[0].innerHTML = history[history.length - 1].join('')
+      historyDisplay[0].innerHTML = numberWithCommas(history[history.length - 1].join(''))
     } else {
       historyDisplay[0].innerHTML = ''
     }
@@ -47,13 +54,16 @@
     // get the simple result of the equation
     var eqString = eval(equation).toString()
 
-    if (eqString.length > digitLimit) {
-      // if result is larger than digitLimit, display it in exponential notation
-      return eval(equation).toExponential(4)
-    } else {
-      // return the simple result
-      return eqString
-    }
+//    if (eqString.length > digitLimit) {
+//      // if result is larger than digitLimit, display it in exponential notation
+//      return eval(equation).toExponential(4)
+//    } else {
+//      // return the simple result
+//      return eqString
+//    }
+    
+    return eqString
+    
   }
 
   // do things based on the input recieved
