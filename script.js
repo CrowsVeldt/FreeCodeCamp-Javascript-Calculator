@@ -1,26 +1,17 @@
 (function () {
   'use strict'
 
-  // the history of all entries
   var history = []
-
-  // the equation that will be evaluated after pressing 'equals'
   var equationToEvaluate = []
-
-  // the number currently being entered
   var currentEntry = ''
-
-  // the total after evaluation
   var total = ''
+  var digitLimit = 12
 
-  // maximum number of characters to display, to prevent overflow of currentEntry
-  const digitLimit = 12
-
-  // access variables for the HTML elements
-  const historyDisplay = document.getElementsByClassName('history-display')
-  const equationDisplay = document.getElementsByClassName('equation-display')
-  const currentDisplay = document.getElementsByClassName('current-display')
-  const buttons = document.querySelectorAll('button')
+      // I used getElementsByClassname and querySelectorAll here to practice accessing elements without getElementByID
+  var historyDisplay = document.getElementsByClassName('history-display')
+  var equationDisplay = document.getElementsByClassName('equation-display')
+  var currentDisplay = document.getElementsByClassName('current-display')
+  var buttons = document.querySelectorAll('button')
 
   // code to format numbers - thanks to Elias Zamaria on StackOverflow (https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript)
   function numberWithCommas (number) {
@@ -28,7 +19,6 @@
     return parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',') + (parts[1] ? '.' + parts[1] : '')
   }
 
-  // display on the screen
   function display () {
     if (total !== '') {
       currentDisplay[0].innerHTML = '<b>' + numberWithCommas(total) + '</b>'
@@ -48,7 +38,6 @@
     }
   }
 
-  // evaluate the function to display
   function evaluate (equation) {
     var eqString = eval(equation).toString()
 
@@ -58,14 +47,12 @@
     }
 
     if (eqString.length > digitLimit) {
-      // if result is larger than digitLimit, display it in exponential notation
       return eval(equation).toExponential(4)
     }
 
     return eval(equation).toString()
   }
 
-  // do things based on the input recieved
   function doStuffWithUserInput (userInput) {
     switch (userInput) {
       case 'clear':
@@ -102,13 +89,9 @@
         break
 
       case 'equals':
-        // add currentEntry to equationToEvaluate
         equationToEvaluate.push(currentEntry)
-        // evaluate equationToEvaluate and set total to the result
         total = evaluate(equationToEvaluate.join(''))
-        // add equationToEvalute to history
         history.push(equationToEvaluate)
-        // empty equationToEvaluate
         equationToEvaluate = []
         currentEntry = ''
         display()
@@ -116,11 +99,8 @@
 
       case 'previous':
         total = ''
-        // set equationToEvaluate to the last element of history
         equationToEvaluate = (history[history.length - 1])
-        // remove the last element of history
         history.pop()
-        // move last element of equationToEvaluate to currentEntry
         currentEntry = equationToEvaluate.pop()
         display()
         break
@@ -131,10 +111,8 @@
           total = ''
         }
         if (currentEntry === '0' && equationToEvaluate.length > 0) {
-          // pop the last element of equationToEvaluate into currentEntry
           currentEntry = equationToEvaluate.pop()
         }
-        // remove the last charecter of currentEntry
         currentEntry = currentEntry.slice(0, -1)
         display()
         break
@@ -167,18 +145,14 @@
           currentEntry = total
           total = ''
         }
-          // add the operator to currentEntry
         currentEntry += userInput
-          // then push currentEntry to equationToEvaluate
         equationToEvaluate.push(currentEntry)
-          // then reset currentEntry
         currentEntry = ''
         display()
         break
     }
   }
 
-  // recieve input
   function acceptUserInput () {
     buttons.forEach(function (buttonPressed) {
       buttonPressed.addEventListener('click', function () {
@@ -208,6 +182,5 @@
   }
 
   display()
-  // do all the things!
   acceptUserInput()
 }())
